@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="resources/img/favicon.png">
+  <link rel="stylesheet" href="resources/css/styles.css" />
+  <script src="resources/js/main.js" type="module" defer></script>
+  <title>Portfolio</title>
+</head>
+
+<body>
+  <main>
+    <div id="app" class="flex flex-row">
+
+      <!-- message prompt -->
+      <div data-prompt class="flex flex-col m-auto">
+        <div data-prompt-border class="border-botton m-auto pb-2">
+          <span data-prompt-text class="text"></span>
+
+          <!-- navigation -->
+          <nav data-nav class="flex flex-row m-auto hidden">
+            <span data-link="about" class="link">About</span>
+            <span data-link="edu" class="link">Education</span>
+            <span data-link="exp" class="link">Experience</span>
+            <span data-link="skills" class="link">Skills</span>
+          </nav>
+        </div>
+
+        <!-- prompt triangle -->
+        <svg data-triangle height="15" width="15" class="triangle mx-auto">
+          <polygon points="0 11.25,7.5 0,15 11.25" class="triangle" />
+        </svg>
+      </div>
+
+      <!-- modal -->
+      <div data-modal class="backdrop hidden">
+        <div class="modal">
+          <div class="header flex flex-row">
+            <div class="browse-page flex flex-row">
+              <span data-back class="back">&lt;</span>
+              <span data-next class="next">&gt;</span>
+            </div>
+            <span data-close class="close">// close</span>
+          </div>
+
+          <div class="body h-full p-5">
+            <!-- about page -->
+            <div data-target="about" class="hidden">
+              <p class="heading">About</p>
+              <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fuga recusandae voluptate
+                reiciendis, ipsa
+                fugit maiores quaerat! Repellendus dolor, ut voluptatibus ipsum mollitia fuga quam eligendi. Non
+                praesentium perferendis eligendi!</p>
+
+              <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fuga recusandae voluptate
+                reiciendis, ipsa
+                fugit maiores quaerat! Repellendus dolor, ut voluptatibus ipsum mollitia fuga quam eligendi. Non
+                praesentium perferendis eligendi!</p>
+            </div>
+
+            <!-- education page -->
+            <div data-target="edu" class="hidden">
+              <p class="heading">Education</p>
+              <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fuga recusandae voluptate
+                reiciendis, ipsa
+                fugit maiores quaerat! Repellendus dolor, ut voluptatibus ipsum mollitia fuga quam eligendi. Non
+                praesentium perferendis eligendi!</p>
+            </div>
+
+            <!-- experience page -->
+            <div data-target="exp" class="hidden">
+              <p class="heading">Experience</p>
+              <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fuga recusandae voluptate
+                reiciendis, ipsa
+                fugit maiores quaerat! Repellendus dolor, ut voluptatibus ipsum mollitia fuga quam eligendi. Non
+                praesentium perferendis eligendi!</p>
+            </div>
+
+            <!-- about page -->
+            <div data-target="skills" class="hidden">
+              <p class="heading">Skills</p>
+              <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum fuga recusandae voluptate
+                reiciendis, ipsa
+                fugit maiores quaerat! Repellendus dolor, ut voluptatibus ipsum mollitia fuga quam eligendi. Non
+                praesentium perferendis eligendi!</p>
+            </div>
+          </div>
+
+          <div class="footer"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

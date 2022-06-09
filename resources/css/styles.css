@@ -1,0 +1,199 @@
+:root {
+  --bg-normal: 0, 0%, 98%;
+  --fg-normal: 0, 0%, 30%;
+  --fg-dull: 0, 0%, 85%;
+  --fg-size: 1rem;
+  --fg-size-small: 0.8rem;
+  --accent-color: 0, 99%, 60%;
+  --border-width: 0.15rem;
+  --border-radius: 0.2rem;
+  --shadow: 0.1rem 0.2rem 0.3rem hsl(0, 0%, 0%, 0.05);
+  --black: 0, 0%, 0%
+}
+
+@font-face {
+  font-family: "Mono MMM 5";
+  src: url("../fonts/monoMMM_5.ttf");
+}
+
+:is(*, ::before, ::after) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: 'Mono MMM 5', Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--bg-normal));
+  transition-duration: 2000ms;
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+  overflow: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.pb-2 {
+  padding-bottom: 0.2rem;
+}
+
+.p-5 {
+  padding: 2.5rem;
+}
+
+.text {
+  color: hsl(var(--fg-normal));
+  font-weight: initial;
+  font-size: var(--fg-size);
+  padding: 0 0.2rem;
+}
+
+.border-botton {
+  border-bottom: var(--border-width) solid hsl(var(--fg-normal));
+}
+
+svg.triangle {
+  fill: hsl(var(--accent-color));
+  margin-top: calc(var(--fg-size) / 2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+nav span {
+  color: hsl(var(--fg-normal));
+  font-size: var(--fg-size);
+  border-left: var(--border-width) solid transparent;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.link:not(:last-child)::after {
+  content: " // ";
+  color: hsl(var(--fg-dull));
+  padding: 0 0.5rem;
+}
+
+nav span.link:hover {
+  color: hsl(var(--accent-color));
+}
+
+.backdrop {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: flex;
+}
+
+.modal {
+  height: 85vh;
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal :is(.header, .footer) {
+  height: 2rem;
+  background: hsla(var(--fg-normal), 0.5);
+}
+
+.modal .body {
+  --border: var(--border-width) solid white;
+  background: hsl(var(--black));
+  color: hsl(var(--bg-normal));
+  height: 100%;
+  overflow-y: auto;
+  border-top: var(--border);
+  border-bottom: var(--border);
+}
+
+.modal .browse-page {
+  margin-left: 0.2rem;
+}
+
+.modal .browse-page :is(.back, .next) {
+  color: white;
+  margin: auto 0.5rem;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.modal .header .close {
+  color: hsl(var(--bg-normal));
+  height: 100%;
+  padding: 0.45rem 0;
+  margin: auto 1rem auto auto;
+  font-size: var(--fg-size-small);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.modal :is(.back, .next, .close):hover {
+  color: white;
+  font-weight: bold;
+}
+
+.modal .body :is(.heading, .para) {
+  font-size: var(--fg-size-small);
+  line-height: 1.5rem;
+}
+
+.modal .body p {
+  margin-bottom: 1rem;
+}
+
+.modal .body .heading {
+  font-weight: bold;
+}
+
+.modal .body .heading:before {
+  content: "> ";
+  color: hsl(var(--accent-color));
+  font-weight: bold;
+}
+
+.modal .body .para {
+  color: hsl(0, 0%, 75%);
+  transition: color 0.5s;
+  font-family: monospace;
+}
+
+.modal .body .para:hover {
+  color: white;
+}
