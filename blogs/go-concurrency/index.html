@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="utf-8"><link rel="icon" type="image/jpg" href="/favicon.webp"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.16.5"><script src="/public/scripts/gTagManager.js"></script><meta name="title" content="M. Moeen - Concurrency in Golang"><meta name="description" content="One of the main setting points of Golang is concurrency, and boy does it deliver. This article walks through the essentials of the concurrency in Golang."><meta property="og:title" content="M. Moeen - Concurrency in Golang"><meta property="og:description" content="One of the main setting points of Golang is concurrency, and boy does it deliver. This article walks through the essentials of the concurrency in Golang."><meta property="og:image" content="https://moeenn.github.io/logo.webp"><meta property="og:url" content="https://moeenn.github.io/blogs/undefined"><meta property="og:site_name" content="M. Moeen - Concurrency in Golang"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://moeenn.github.io/blogs/undefined"><meta property="twitter:title" content="M. Moeen - Concurrency in Golang"><meta property="twitter:image" content="https://moeenn.github.io/logo.webp"><meta property="twitter:description" content="One of the main setting points of Golang is concurrency, and boy does it deliver. This article walks through the essentials of the concurrency in Golang."><title>M. Moeen - Concurrency in Golang</title><link rel="stylesheet" href="/assets/blogs.CyOt0-9k.css"></head> <body class="text-black h-screen flex flex-col"> <!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6RFWPQD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --> <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <nav> <div class="pt-8 pb-4 flex justify-between"> <a class="my-auto cursor-pointer" href="/#"> <span class="font-mono pb-1 pt-2 font-bold text-white bg-gray-900 px-3 py-1 rounded">M.M</span> </a> <div class="block md:hidden"> <div class="flex space-x-2"> <a href="https://github.com/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="Github"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"> <rect width="256" height="256" fill="none"></rect><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,208H72a32,32,0,0,1-32-32A32,32,0,0,0,8,144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path> </svg> </a> <a href="https://www.linkedin.com/in/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="LinkedIn"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="88" cy="84" r="12"></circle></svg> </a> <div data-navbutton class="hover:bg-gray-200 rounded p-2 cursor-pointer"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-700 h-6 w-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path> </svg> </div> </div> </div> <div class="hidden md:flex md:space-x-2"> <a href="/#career" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Career </a><a href="/#projects" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Projects </a><a href="/#tools" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Skills &amp; Tools </a><a href="/#contact" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Contact Me </a> <a href="/blogs" class="px-3 py-2 font-bold text-black text-sm my-auto hover:bg-gray-200 border-b-2 border-transparent hover:border-black rounded-t transition-colors">
+Blogs
+</a> <div class="flex px-2"> <span class="my-auto text-gray-300">|</span> </div> <div class="flex space-x-2"> <a href="https://github.com/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="Github"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"> <rect width="256" height="256" fill="none"></rect><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,208H72a32,32,0,0,1-32-32A32,32,0,0,0,8,144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path> </svg> </a> <a href="https://www.linkedin.com/in/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="LinkedIn"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="88" cy="84" r="12"></circle></svg> </a> </div> </div> </div> <div data-mobilemenu class="hidden"> <div class="flex flex-col md:hidden bg-gray-100 rounded"> <a href="/#career" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Career </a><a href="/#projects" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Projects </a><a href="/#tools" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Skills &amp; Tools </a><a href="/#contact" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Contact Me </a> <a href="/blogs" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded">
+Blogs
+</a> </div> </div> </nav> <script src="/scripts/navbar.js" defer></script>  </div> <main class="flex-1">  <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <div class="pt-8 pb-14"> <h2 class="text-2xl space-x-2 mb-5"> <span class="font-normal text-gray-500">#</span> <span class="text-gray-900">Concurrency in Golang</span> </h2> <div class="prose-xl"> <h3 id="channels">Channels</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	valueChan </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> int</span><span style="color:#6A737D"> /*, optional buffer length here */</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">		for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 10</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">			// sending value into unbuffered channel will block until there is</span></span>
+<span class="line"><span style="color:#6A737D">			// an active receiver</span></span>
+<span class="line"><span style="color:#E1E4E8">			valueChan </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8"> i</span></span>
+<span class="line"><span style="color:#E1E4E8">		}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">		// channel must ALWAYS close the channel</span></span>
+<span class="line"><span style="color:#B392F0">		close</span><span style="color:#E1E4E8">(valueChan)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	// receive values until channel is closed</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> value </span><span style="color:#F97583">:=</span><span style="color:#F97583"> range</span><span style="color:#E1E4E8"> valueChan {</span></span>
+<span class="line"><span style="color:#E1E4E8">		fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"value: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, value)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="implementing-generators-using-channels">Implementing generators using channels</h3>
+<p>Considering how Python uses generators, for iterating over a large number of values without running into memory usage issues. We can implement a similar pattern in Go using Channels</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> iterate</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">n</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">chan</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  c </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">    for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> n; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">      c </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8"> i</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	// channel must be closed by the sender</span></span>
+<span class="line"><span style="color:#B392F0">    close</span><span style="color:#E1E4E8">(c)</span></span>
+<span class="line"><span style="color:#E1E4E8">  }()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> c</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">  // ranging over channel requires that channel is eventually closed</span></span>
+<span class="line"><span style="color:#6A737D">  // if we don't closed the channel, this program will dead-lock because</span></span>
+<span class="line"><span style="color:#6A737D">  // range will be expecting more messages to come in after iterate has exited.</span></span>
+<span class="line"><span style="color:#F97583">  for</span><span style="color:#E1E4E8"> n </span><span style="color:#F97583">:=</span><span style="color:#F97583"> range</span><span style="color:#B392F0"> iterate</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1000</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">%d\t</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, n)</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Note</strong>: When we range over incoming channel values, we must ensure that the sender closes the channel when it is done sending values. The sender must always be responsible for closing the channel and if the channel is left open, it will result in a deadlock; The receiver will keep waiting for incoming values after the sender is done sending values.</p>
+<h3 id="channel-sync-select">Channel Sync: Select</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">time</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	chanOne </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">	chanTwo </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">		for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;=</span><span style="color:#79B8FF"> 10</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">			time.</span><span style="color:#B392F0">Sleep</span><span style="color:#E1E4E8">(time.Second </span><span style="color:#F97583">/</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">			chanOne </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8"> i</span></span>
+<span class="line"><span style="color:#E1E4E8">		}</span></span>
+<span class="line"><span style="color:#6A737D">		// Don't close the channel here</span></span>
+<span class="line"><span style="color:#E1E4E8">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">		for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 100</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;=</span><span style="color:#79B8FF"> 200</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">+=</span><span style="color:#79B8FF"> 10</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">			time.</span><span style="color:#B392F0">Sleep</span><span style="color:#E1E4E8">(time.Second)</span></span>
+<span class="line"><span style="color:#E1E4E8">			chanTwo </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8"> i</span></span>
+<span class="line"><span style="color:#E1E4E8">		}</span></span>
+<span class="line"><span style="color:#6A737D">		// Don't close the channel here</span></span>
+<span class="line"><span style="color:#E1E4E8">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	// we expect to receive 20 messages total on both channels</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 20</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#6A737D">		// select will wait for incoming messages on these two channels.</span></span>
+<span class="line"><span style="color:#6A737D">		//Select block exits after in two situations</span></span>
+<span class="line"><span style="color:#6A737D">		// - it receives the first message from any of the two channels.</span></span>
+<span class="line"><span style="color:#6A737D">		// - any of the two channels closes.</span></span>
+<span class="line"><span style="color:#F97583">		select</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">		case</span><span style="color:#E1E4E8"> one </span><span style="color:#F97583">:=</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">chanOne:</span></span>
+<span class="line"><span style="color:#E1E4E8">			fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"chanOne: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, one)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">		case</span><span style="color:#E1E4E8"> two </span><span style="color:#F97583">:=</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">chanTwo:</span></span>
+<span class="line"><span style="color:#E1E4E8">			fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"chanTwo: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, two)</span></span>
+<span class="line"><span style="color:#E1E4E8">		}</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	close</span><span style="color:#E1E4E8">(chanOne)</span></span>
+<span class="line"><span style="color:#B392F0">	close</span><span style="color:#E1E4E8">(chanTwo)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="timers--tickers">Timers &#x26; Tickers</h3>
+<p><strong>Timers</strong> can be used to perform some action in the future.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">time</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	t1 </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> time.</span><span style="color:#B392F0">NewTimer</span><span style="color:#E1E4E8">(time.Millisecond </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 500</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// will fire second</span></span>
+<span class="line"><span style="color:#E1E4E8">	t2 </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> time.</span><span style="color:#B392F0">NewTimer</span><span style="color:#E1E4E8">(time.Millisecond </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 250</span><span style="color:#E1E4E8">) </span><span style="color:#6A737D">// will fire first</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">		select</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">		case</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">t1.C:</span></span>
+<span class="line"><span style="color:#E1E4E8">			fmt.</span><span style="color:#B392F0">Println</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"timer one fired"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">		case</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">t2.C:</span></span>
+<span class="line"><span style="color:#E1E4E8">			fmt.</span><span style="color:#B392F0">Println</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"timer two fired"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">		}</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Tickers</strong> can be used to perform an action every <code>n</code> duration.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#6A737D">// print time once a second for 5 seconds</span></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	ticker </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> time.</span><span style="color:#B392F0">NewTicker</span><span style="color:#E1E4E8">(time.Second)</span></span>
+<span class="line"><span style="color:#F97583">	defer</span><span style="color:#E1E4E8"> ticker.</span><span style="color:#B392F0">Stop</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		v </span><span style="color:#F97583">:=</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">ticker.C</span></span>
+<span class="line"><span style="color:#E1E4E8">		fmt.</span><span style="color:#B392F0">Println</span><span style="color:#E1E4E8">(v)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">time</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	ticker </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> time.</span><span style="color:#B392F0">NewTicker</span><span style="color:#E1E4E8">(time.Millisecond </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 250</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">	done </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8">{})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	defer</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">		fmt.</span><span style="color:#B392F0">Println</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"cleaning up..."</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">		ticker.</span><span style="color:#B392F0">Stop</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#B392F0">		close</span><span style="color:#E1E4E8">(done)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">		for</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">			select</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">			case</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">done:</span></span>
+<span class="line"><span style="color:#F97583">				return</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">			/* this will fire every 250 ms */</span></span>
+<span class="line"><span style="color:#F97583">			case</span><span style="color:#E1E4E8"> t </span><span style="color:#F97583">:=</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">ticker.C:</span></span>
+<span class="line"><span style="color:#E1E4E8">				fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"tick: </span><span style="color:#79B8FF">%v\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, t)</span></span>
+<span class="line"><span style="color:#E1E4E8">			}</span></span>
+<span class="line"><span style="color:#E1E4E8">		}</span></span>
+<span class="line"><span style="color:#E1E4E8">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	/* we will receive 8 messages from ticker in 2 seconds */</span></span>
+<span class="line"><span style="color:#E1E4E8">	time.</span><span style="color:#B392F0">Sleep</span><span style="color:#E1E4E8">(time.Second </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">	done </span><span style="color:#F97583">&#x3C;-</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8">{}{}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Println</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Completed"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="worker-pools">Worker pools</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">time</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> worker</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">jobs</span><span style="color:#F97583"> &#x3C;-chan</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">results</span><span style="color:#F97583"> chan&#x3C;-</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> job </span><span style="color:#F97583">:=</span><span style="color:#F97583"> range</span><span style="color:#E1E4E8"> jobs {</span></span>
+<span class="line"><span style="color:#E1E4E8">		fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Processing job: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, job)</span></span>
+<span class="line"><span style="color:#E1E4E8">		time.</span><span style="color:#B392F0">Sleep</span><span style="color:#E1E4E8">(time.Second)</span></span>
+<span class="line"><span style="color:#E1E4E8">		results </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8"> job </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 10</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	start </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> time.</span><span style="color:#B392F0">Now</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	numJobs </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 5</span></span>
+<span class="line"><span style="color:#E1E4E8">	jobs </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">, numJobs)</span></span>
+<span class="line"><span style="color:#E1E4E8">	results </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">, numJobs)</span></span>
+<span class="line"><span style="color:#F97583">	defer</span><span style="color:#B392F0"> close</span><span style="color:#E1E4E8">(results)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	// spawn multiple workers to maximize efficiency</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> w </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; w </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">; w</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">		go</span><span style="color:#B392F0"> worker</span><span style="color:#E1E4E8">(jobs, results)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> numJobs; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		jobs </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8"> i</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	close</span><span style="color:#E1E4E8">(jobs)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	// cannot range over channel because sender is not closing the channel</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#E1E4E8"> numJobs; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"result: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8">results)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	// will take 1 second to complete</span></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elapsed: </span><span style="color:#79B8FF">%v\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, time.</span><span style="color:#B392F0">Since</span><span style="color:#E1E4E8">(start))</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h4 id="another-example">Another example</h4>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">package</span><span style="color:#B392F0"> main</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">time</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> Entry</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">	Id     </span><span style="color:#F97583">int</span></span>
+<span class="line"><span style="color:#E1E4E8">	Result </span><span style="color:#F97583">bool</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> createData</span><span style="color:#E1E4E8">() []</span><span style="color:#B392F0">Entry</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">	data </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> []</span><span style="color:#B392F0">Entry</span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">4</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">6</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">7</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">		{Id: </span><span style="color:#79B8FF">8</span><span style="color:#E1E4E8">, Result: </span><span style="color:#79B8FF">false</span><span style="color:#E1E4E8">},</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#E1E4E8"> data</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> processEntry</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">entry</span><span style="color:#B392F0"> Entry</span><span style="color:#E1E4E8">) </span><span style="color:#B392F0">Entry</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">	time.</span><span style="color:#B392F0">Sleep</span><span style="color:#E1E4E8">(time.Second)</span></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Processed entry: </span><span style="color:#79B8FF">%v\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, entry)</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#E1E4E8"> entry</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> executor</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">entries</span><span style="color:#E1E4E8"> []</span><span style="color:#B392F0">Entry</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">maxWorkers</span><span style="color:#F97583"> int</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">results</span><span style="color:#F97583"> chan&#x3C;-</span><span style="color:#B392F0"> Entry</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">	sem </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8">{}, maxWorkers)</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> _, entry </span><span style="color:#F97583">:=</span><span style="color:#F97583"> range</span><span style="color:#E1E4E8"> entries {</span></span>
+<span class="line"><span style="color:#F97583">		go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">entry</span><span style="color:#B392F0"> Entry</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#6A737D">			// this will block if the semaphore channel buffer is already full</span></span>
+<span class="line"><span style="color:#6A737D">			// also, we don't care about the value being sent over the channel,</span></span>
+<span class="line"><span style="color:#6A737D">			// therefore we are using am empty struct</span></span>
+<span class="line"><span style="color:#E1E4E8">			sem </span><span style="color:#F97583">&#x3C;-</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8">{}{}</span></span>
+<span class="line"><span style="color:#E1E4E8">			results </span><span style="color:#F97583">&#x3C;-</span><span style="color:#B392F0"> processEntry</span><span style="color:#E1E4E8">(entry)</span></span>
+<span class="line"><span style="color:#F97583">			&#x3C;-</span><span style="color:#E1E4E8">sem</span></span>
+<span class="line"><span style="color:#E1E4E8">		}(entry)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	entries </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> createData</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">	maxWorkers </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 2</span></span>
+<span class="line"><span style="color:#E1E4E8">	results </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#B392F0"> Entry</span><span style="color:#E1E4E8">, maxWorkers)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">	executor</span><span style="color:#E1E4E8">(entries, maxWorkers, results)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#B392F0"> len</span><span style="color:#E1E4E8">(entries); i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		result </span><span style="color:#F97583">:=</span><span style="color:#F97583"> &#x3C;-</span><span style="color:#E1E4E8">results</span></span>
+<span class="line"><span style="color:#E1E4E8">		fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Result: </span><span style="color:#79B8FF">%v\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, result)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Note</strong>: The purpose of the Semaphore (i.e. <code>sem</code>) is to coordinate and only allow max number of operation to happen concurrently i.e. <code>maxWorkers</code>.</p>
+<h3 id="atomic-variables">Atomic variables</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">sync</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> processCounter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">counter</span><span style="color:#F97583"> *int</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 1000</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">counter)</span><span style="color:#F97583">++</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">	// WARNING: mutable state shared by many goroutines</span></span>
+<span class="line"><span style="color:#E1E4E8">	counter </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span></span>
+<span class="line"><span style="color:#F97583">	var</span><span style="color:#E1E4E8"> wg </span><span style="color:#B392F0">sync</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">WaitGroup</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 50</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		wg.</span><span style="color:#B392F0">Add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">		go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">			defer</span><span style="color:#E1E4E8"> wg.</span><span style="color:#B392F0">Done</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#B392F0">			processCounter</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">counter)</span></span>
+<span class="line"><span style="color:#E1E4E8">		}()</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	wg.</span><span style="color:#B392F0">Wait</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"counter: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, counter)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Note</strong>: The above code has a race-condition. When a non-atomic variable is mutated by multiple go-routines simultaneously, some updates (i.e. increments) may be missed. The solution is to use atomic variables.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">sync</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">sync/atomic</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> processCounter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">counter</span><span style="color:#F97583"> *</span><span style="color:#B392F0">atomic</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Uint64</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 1000</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">counter).</span><span style="color:#B392F0">Add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">	// atomics are thread-safe and don't incur race-conditions</span></span>
+<span class="line"><span style="color:#F97583">	var</span><span style="color:#E1E4E8"> counter </span><span style="color:#B392F0">atomic</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Uint64</span></span>
+<span class="line"><span style="color:#F97583">	var</span><span style="color:#E1E4E8"> wg </span><span style="color:#B392F0">sync</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">WaitGroup</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 50</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		wg.</span><span style="color:#B392F0">Add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">		go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">c</span><span style="color:#F97583"> *</span><span style="color:#B392F0">atomic</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Uint64</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">			processCounter</span><span style="color:#E1E4E8">(c)</span></span>
+<span class="line"><span style="color:#E1E4E8">			wg.</span><span style="color:#B392F0">Done</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">		}(</span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">counter)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	wg.</span><span style="color:#B392F0">Wait</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"counter: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, counter.</span><span style="color:#B392F0">Load</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="mutex">Mutex</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">sync</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">type</span><span style="color:#B392F0"> MyAtomicCounter</span><span style="color:#F97583"> struct</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">	mu    </span><span style="color:#B392F0">sync</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Mutex</span></span>
+<span class="line"><span style="color:#E1E4E8">	count </span><span style="color:#F97583">uint64</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">c </span><span style="color:#F97583">*</span><span style="color:#B392F0">MyAtomicCounter</span><span style="color:#E1E4E8">) </span><span style="color:#B392F0">Increment</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	c.mu.</span><span style="color:#B392F0">Lock</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">	c.count</span><span style="color:#F97583">++</span></span>
+<span class="line"><span style="color:#E1E4E8">	c.mu.</span><span style="color:#B392F0">Unlock</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#E1E4E8"> (</span><span style="color:#FFAB70">c </span><span style="color:#F97583">*</span><span style="color:#B392F0">MyAtomicCounter</span><span style="color:#E1E4E8">) </span><span style="color:#B392F0">Count</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">uint64</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#F97583">	return</span><span style="color:#E1E4E8"> c.count</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> processCounter</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">counter</span><span style="color:#F97583"> *</span><span style="color:#B392F0">MyAtomicCounter</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 1000</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		(</span><span style="color:#F97583">*</span><span style="color:#E1E4E8">counter).</span><span style="color:#B392F0">Increment</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#6A737D">	// atomic variables are thread-safe and don't incur race-conditions</span></span>
+<span class="line"><span style="color:#F97583">	var</span><span style="color:#E1E4E8"> counter </span><span style="color:#B392F0">MyAtomicCounter</span></span>
+<span class="line"><span style="color:#F97583">	var</span><span style="color:#E1E4E8"> wg </span><span style="color:#B392F0">sync</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">WaitGroup</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> i </span><span style="color:#F97583">:=</span><span style="color:#79B8FF"> 0</span><span style="color:#E1E4E8">; i </span><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF"> 50</span><span style="color:#E1E4E8">; i</span><span style="color:#F97583">++</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">		wg.</span><span style="color:#B392F0">Add</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">		go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">c</span><span style="color:#F97583"> *</span><span style="color:#B392F0">MyAtomicCounter</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">			processCounter</span><span style="color:#E1E4E8">(c)</span></span>
+<span class="line"><span style="color:#E1E4E8">			wg.</span><span style="color:#B392F0">Done</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">		}(</span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">counter)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	wg.</span><span style="color:#B392F0">Wait</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"counter: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, counter.</span><span style="color:#B392F0">Count</span><span style="color:#E1E4E8">())</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<h3 id="multiple-workers-sending-over-a-channel">Multiple workers sending over a channel</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="go"><code><span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> (</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">fmt</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">math/rand</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">sync</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#9ECBFF">	"</span><span style="color:#B392F0">time</span><span style="color:#9ECBFF">"</span></span>
+<span class="line"><span style="color:#E1E4E8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> processEntries</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">duration</span><span style="color:#B392F0"> time</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Duration</span><span style="color:#E1E4E8">, </span><span style="color:#FFAB70">results</span><span style="color:#F97583"> chan&#x3C;-</span><span style="color:#F97583"> string</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#E1E4E8">	id </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> rand.</span><span style="color:#B392F0">Intn</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">100</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"starting: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, id)</span></span>
+<span class="line"><span style="color:#E1E4E8">	time.</span><span style="color:#B392F0">Sleep</span><span style="color:#E1E4E8">(duration)</span></span>
+<span class="line"><span style="color:#E1E4E8">	fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"complete: </span><span style="color:#79B8FF">%d\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, id)</span></span>
+<span class="line"><span style="color:#E1E4E8">	results </span><span style="color:#F97583">&#x3C;-</span><span style="color:#E1E4E8"> fmt.</span><span style="color:#B392F0">Sprintf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"action #</span><span style="color:#79B8FF">%d</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, id)</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">func</span><span style="color:#B392F0"> main</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">	start </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> time.</span><span style="color:#B392F0">Now</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#F97583">	defer</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#E1E4E8">		fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"elapsed: </span><span style="color:#79B8FF">%v\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, time.</span><span style="color:#B392F0">Since</span><span style="color:#E1E4E8">(start))</span></span>
+<span class="line"><span style="color:#E1E4E8">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	results </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> make</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">chan</span><span style="color:#F97583"> string</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#F97583">	defer</span><span style="color:#B392F0"> close</span><span style="color:#E1E4E8">(results)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	wg </span><span style="color:#F97583">:=</span><span style="color:#B392F0"> sync</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">WaitGroup</span><span style="color:#E1E4E8">{}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	const</span><span style="color:#79B8FF"> MAX_ENTRIES</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 3</span></span>
+<span class="line"><span style="color:#E1E4E8">	waitSeconds </span><span style="color:#F97583">:=</span><span style="color:#E1E4E8"> [MAX_ENTRIES]</span><span style="color:#B392F0">time</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Duration</span><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">		time.Second </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">		time.Second </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">		time.Second </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"><span style="color:#E1E4E8">	wg.</span><span style="color:#B392F0">Add</span><span style="color:#E1E4E8">(MAX_ENTRIES)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">	for</span><span style="color:#E1E4E8"> _, wait </span><span style="color:#F97583">:=</span><span style="color:#F97583"> range</span><span style="color:#E1E4E8"> waitSeconds {</span></span>
+<span class="line"><span style="color:#F97583">		go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">wait</span><span style="color:#B392F0"> time</span><span style="color:#E1E4E8">.</span><span style="color:#B392F0">Duration</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">			defer</span><span style="color:#E1E4E8"> wg.</span><span style="color:#B392F0">Done</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#B392F0">			processEntries</span><span style="color:#E1E4E8">(wait, results)</span></span>
+<span class="line"><span style="color:#E1E4E8">		}(wait)</span></span>
+<span class="line"><span style="color:#E1E4E8">	}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">	// range in background, to not block the main goroutine</span></span>
+<span class="line"><span style="color:#F97583">	go</span><span style="color:#F97583"> func</span><span style="color:#E1E4E8">() {</span></span>
+<span class="line"><span style="color:#F97583">		for</span><span style="color:#E1E4E8"> result </span><span style="color:#F97583">:=</span><span style="color:#F97583"> range</span><span style="color:#E1E4E8"> results {</span></span>
+<span class="line"><span style="color:#E1E4E8">			fmt.</span><span style="color:#B392F0">Printf</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"result: </span><span style="color:#79B8FF">%s\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">, result)</span></span>
+<span class="line"><span style="color:#E1E4E8">		}</span></span>
+<span class="line"><span style="color:#E1E4E8">	}()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">	wg.</span><span style="color:#B392F0">Wait</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p><strong>Note</strong>: The above solution works because we already know the total number of messages which are going to be sent over the <code>results</code> channel, by the three workers.</p> </div> </div>  </div>  </main> <footer class="py-4 bg-gray-200 text-gray-500"> <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <div class="flex"> <span class="text-sm mx-auto">© 2025 - Muhammad Moeen</span> </div>  </div> </footer> <div data-scrollbuttoncontainer class="transition-all duration-300 opacity-0 cursor-pointer"> <button data-scrollbutton title="Go To Top" class="fixed z-90 bottom-8 right-8 border-0 w-12 h-12 rounded-full drop-shadow-md bg-black text-white text-3xl font-bold"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 m-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5"></path> </svg> </button> </div> <script src="/scripts/scrolltop.js" defer></script> </body></html>
