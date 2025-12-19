@@ -1,0 +1,863 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="utf-8"><link rel="icon" type="image/jpg" href="/favicon.webp"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.16.5"><script src="/scripts/gTagManager.js"></script><meta name="title" content="M. Moeen - Fundamentals of python"><meta name="description" content="There is no doubt that python is currently one of the most used languages in the world. It is a well crafted language with great libraries and is used in a wide range of domains. Being able to write python is a useful skill for any developer to have."><meta property="og:title" content="M. Moeen - Fundamentals of python"><meta property="og:description" content="There is no doubt that python is currently one of the most used languages in the world. It is a well crafted language with great libraries and is used in a wide range of domains. Being able to write python is a useful skill for any developer to have."><meta property="og:image" content="https://moeenn.github.io/logo.webp"><meta property="og:url" content="https://moeenn.github.io/blogs/undefined"><meta property="og:site_name" content="M. Moeen - Fundamentals of python"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://moeenn.github.io/blogs/undefined"><meta property="twitter:title" content="M. Moeen - Fundamentals of python"><meta property="twitter:image" content="https://moeenn.github.io/logo.webp"><meta property="twitter:description" content="There is no doubt that python is currently one of the most used languages in the world. It is a well crafted language with great libraries and is used in a wide range of domains. Being able to write python is a useful skill for any developer to have."><title>M. Moeen - Fundamentals of python</title><link rel="stylesheet" href="/assets/blogs.BL-tQ2To.css"></head> <body class="text-black h-screen flex flex-col"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6RFWPQD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <nav> <div class="pt-8 pb-4 flex justify-between"> <a class="my-auto cursor-pointer" href="/#"> <span class="font-mono pb-1 pt-2 font-bold text-white bg-gray-900 px-3 py-1 rounded">M.M</span> </a> <div class="block md:hidden"> <div class="flex space-x-2"> <a href="https://github.com/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="Github"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"> <rect width="256" height="256" fill="none"></rect><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,208H72a32,32,0,0,1-32-32A32,32,0,0,0,8,144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path> </svg> </a> <a href="https://www.linkedin.com/in/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="LinkedIn"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="88" cy="84" r="12"></circle></svg> </a> <div data-navbutton class="hover:bg-gray-200 rounded p-2 cursor-pointer"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-700 h-6 w-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path> </svg> </div> </div> </div> <div class="hidden md:flex md:space-x-2"> <a href="/#career" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Career </a><a href="/#projects" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Projects </a><a href="/#tools" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Skills &amp; Tools </a><a href="/#contact" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Contact Me </a> <a href="/blogs" class="px-3 py-2 font-bold text-black text-sm my-auto hover:bg-gray-200 border-b-2 border-transparent hover:border-black rounded-t transition-colors">
+Blogs
+</a> <div class="flex px-2"> <span class="my-auto text-gray-300">|</span> </div> <div class="flex space-x-2"> <a href="https://github.com/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="Github"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"> <rect width="256" height="256" fill="none"></rect><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,208H72a32,32,0,0,1-32-32A32,32,0,0,0,8,144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path> </svg> </a> <a href="https://www.linkedin.com/in/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="LinkedIn"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="88" cy="84" r="12"></circle></svg> </a> </div> </div> </div> <div data-mobilemenu class="hidden"> <div class="flex flex-col md:hidden bg-gray-100 rounded"> <a href="/#career" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Career </a><a href="/#projects" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Projects </a><a href="/#tools" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Skills &amp; Tools </a><a href="/#contact" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Contact Me </a> <a href="/blogs" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded">
+Blogs
+</a> </div> </div> </nav> <script src="/scripts/navbar.js" defer></script>  </div> <main class="flex-1">  <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <div class="pt-8 pb-14"> <div class="pb-8"> <a href="/blogs" class="text-sm bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-full inline-flex space-x-2"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 my-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path> </svg> <span class="my-auto leading-none">Back</span></a> </div> <h2 class="text-2xl space-x-2 mb-2"> <span class="font-normal text-gray-500">#</span> <span class="text-gray-900">Fundamentals of python</span> </h2> <div class="flex flex-wrap gap-2 mb-6"> <span class="text-xs bg-gray-200 hover:bg-gray-300 rounded px-2 py-1"> Python </span> <span class="text-xs bg-gray-200 hover:bg-gray-300 rounded px-2 py-1"> Fundamentals </span> </div> <div class="grid grid-cols-1 xl:grid-cols-4"> <div class="xl:order-last xl:pl-6 h-full"> <div class="xl:sticky xl:top-4"> <p class="font-medium text-gray-700 mb-2">
+Table of content
+</p> <a data-level="2" href="#the-essentials" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> The essentials </a><a data-level="3" href="#printing-to-console" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Printing to console </a><a data-level="3" href="#comments" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Comments </a><a data-level="3" href="#operators" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Operators </a><a data-level="3" href="#match" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Match </a><a data-level="3" href="#string" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> String </a><a data-level="4" href="#string-methods" style="margin-left: 1.5rem" class="block text-sm pb-1 hover:underline underline-offset-4"> String methods </a><a data-level="4" href="#fstring---string-interpolation" style="margin-left: 1.5rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Fstring - String interpolation </a><a data-level="4" href="#formatting-rules" style="margin-left: 1.5rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Formatting rules </a><a data-level="3" href="#list" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> List </a><a data-level="3" href="#tuple" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Tuple </a><a data-level="3" href="#sets" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Sets </a><a data-level="3" href="#dictionary" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Dictionary </a><a data-level="2" href="#counter" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Counter </a><a data-level="2" href="#taking-input-from-user" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Taking Input from User </a><a data-level="2" href="#functions" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Functions </a><a data-level="2" href="#exception-handling" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Exception Handling </a><a data-level="2" href="#file-handling" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> File Handling </a><a data-level="3" href="#file-modes" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> File modes </a><a data-level="3" href="#writing-to-files" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Writing to files </a><a data-level="2" href="#context-managers" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Context Managers </a><a data-level="3" href="#define-using-classes" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Define using Classes </a><a data-level="3" href="#define-using-decorators-recommended" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Define using Decorators (recommended) </a><a data-level="2" href="#environment-variables" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Environment variables </a><a data-level="2" href="#filesystem" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Filesystem </a><a data-level="2" href="#json" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> JSON </a><a data-level="2" href="#random" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Random </a><a data-level="2" href="#dates" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Dates </a><a data-level="3" href="#track-time-of-execution" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Track time of execution </a><a data-level="3" href="#time" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Time </a><a data-level="3" href="#date-time" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Date-time </a><a data-level="2" href="#parse-arguments" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Parse Arguments </a> </div> </div> <div class="xl:order-first xl:col-span-3 prose-xl prose-p:leading-relaxed prose-p:text-base prose-li:leading-relaxed prose-li:text-base prose-li:p-0 prose-li:my-1 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h4:text-md prose-headings:mb-2 prose-headings:mt-12 prose-headings:scroll-mt-4 prose-pre:mt-2 prose-pre:text-base prose-pre:leading-6 prose-ul:list-disc prose-table:border prose-table:border-gray-300 prose-table:w-full prose-table:mb-10 prose-tr:border prose-tr:border-gray-300 prose-th:border-x prose-th:border-gray-300 prose-th:py-1 prose-th:bg-gray-100 prose-td:border-x prose-td:border-gray-300 prose-td:py-1"> <p class="mt-8 xl:mt-0">There is no doubt that python is currently one of the most used languages in the world. It is a well crafted language with great libraries and is used in a wide range of domains. Being able to write python is a useful skill for any developer to have.</p> <p>There is no doubt that python is currently one of the most used languages in the world. It is a well crafted language with great libraries and is used in a wide range of domains. Being able to write python is a useful skill for any developer to have.</p>
+<h2 id="the-essentials">The essentials</h2>
+<h3 id="printing-to-console">Printing to console</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># print message with new line at the end</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Hello world</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># print formatted message</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Hello </span><span style="color:#F78C6C">%s</span><span style="color:#C3E88D">, are you </span><span style="color:#F78C6C">%d</span><span style="color:#C3E88D"> years old?</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> %</span><span style="color:#89DDFF"> (</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">User</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 20</span><span style="color:#89DDFF">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># print without new line at the end</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Hello there</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> end</span><span style="color:#89DDFF">=</span><span style="color:#89DDFF">""</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h3 id="comments">Comments</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># This is a single line comment</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">"""</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">      This is a multiline comment</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">      Also known as comment-block</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">"""</span></span></code></pre>
+<h3 id="operators">Operators</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Type</th><th align="left">Operator</th><th align="left">Explanation</th></tr></thead><tbody><tr><td align="right">Arithmetic operators</td><td align="left"><code>()</code></td><td align="left">Precedence 1st</td></tr><tr><td align="right"></td><td align="left"><code>**</code></td><td align="left">Precedence 2nd</td></tr><tr><td align="right"></td><td align="left"><code>% / // *</code></td><td align="left">Precedence 3rd</td></tr><tr><td align="right"></td><td align="left"><code>+ -</code></td><td align="left">Precedence 4th</td></tr><tr><td align="right">Compound operators</td><td align="left"><code>+=</code></td><td align="left"></td></tr><tr><td align="right"></td><td align="left"><code>-=</code></td><td align="left"></td></tr><tr><td align="right"></td><td align="left"><code>*=*</code></td><td align="left"></td></tr><tr><td align="right"></td><td align="left"><code>/=</code></td><td align="left"></td></tr><tr><td align="right"></td><td align="left"><code>**=</code></td><td align="left">Power and equal</td></tr><tr><td align="right"></td><td align="left"><code>%=</code></td><td align="left">Mod and equal</td></tr><tr><td align="right"></td><td align="left"><code>//=</code></td><td align="left">Floor divisor and equal</td></tr><tr><td align="right">Logical operators</td><td align="left"><code>not</code></td><td align="left">Precedence 1st</td></tr><tr><td align="right"></td><td align="left"><code>and</code></td><td align="left">Precedence 2nd</td></tr><tr><td align="right"></td><td align="left"><code>or</code></td><td align="left">Precedence 3rd</td></tr></tbody></table>
+<h3 id="match">Match</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># basic example</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> run_command</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">command</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    match</span><span style="color:#BABED8"> command</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">reset</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">resetting system</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">exit</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">exiting...</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">            exit</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#BABED8"> other</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#C792EA">f</span><span style="color:#C3E88D">"unrecognized command: '</span><span style="color:#F78C6C">{</span><span style="color:#82AAFF">command</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">'"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    while</span><span style="color:#89DDFF"> True:</span></span>
+<span class="line"><span style="color:#BABED8">        command </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> input</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">$ </span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">        run_command</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">command</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># more advanced usages</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> run_command</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">command</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    match</span><span style="color:#BABED8"> command</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">split</span><span style="color:#89DDFF">():</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#89DDFF"> [</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">load</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> |</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">open</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#BABED8"> filename</span><span style="color:#89DDFF">]:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#C792EA">f</span><span style="color:#C3E88D">"opening file: </span><span style="color:#F78C6C">{</span><span style="color:#82AAFF">filename</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#89DDFF"> [</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">save</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">]:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">saving current file</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#89DDFF"> [</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">quit</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> |</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">exit</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> *</span><span style="color:#BABED8">rest</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF;font-style:italic"> if</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">--force</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> in</span><span style="color:#BABED8"> rest </span><span style="color:#89DDFF">or</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">-f</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> in</span><span style="color:#BABED8"> rest</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">force exiting...</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">            exit</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#89DDFF"> [</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">quit</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> |</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">exit</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">]:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">exiting...</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">            exit</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        case</span><span style="color:#BABED8"> _</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#C792EA">f</span><span style="color:#C3E88D">"unrecognized command: '</span><span style="color:#F78C6C">{</span><span style="color:#82AAFF">command</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">'"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    while</span><span style="color:#89DDFF"> True:</span></span>
+<span class="line"><span style="color:#BABED8">        command </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> input</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">$ </span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">        run_command</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">command</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h3 id="string">String</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">message</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Hello world</span><span style="color:#89DDFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># access a character using subscript</span></span>
+<span class="line"><span style="color:#BABED8">alphabet</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> message</span><span style="color:#89DDFF">[</span><span style="color:#F78C6C">0</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># access first five characters</span></span>
+<span class="line"><span style="color:#BABED8">word</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> message</span><span style="color:#89DDFF">[:</span><span style="color:#F78C6C">5</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># access last five words</span></span>
+<span class="line"><span style="color:#BABED8">last_word</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> message</span><span style="color:#89DDFF">[</span><span style="color:#F78C6C">6</span><span style="color:#89DDFF">:</span><span style="color:#F78C6C">11</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># length of string</span></span>
+<span class="line"><span style="color:#BABED8">length</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#82AAFF"> len</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">message</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># convert number to string</span></span>
+<span class="line"><span style="color:#BABED8">num_string</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h4 id="string-methods">String methods</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Operator</th><th align="left">Description</th></tr></thead><tbody><tr><td align="right"><code>title()</code></td><td align="left">Capitalize the first letter of each word</td></tr><tr><td align="right"><code>upper()</code></td><td align="left">All letters are uppercase</td></tr><tr><td align="right"><code>lower()</code></td><td align="left">All letters are lowercase</td></tr><tr><td align="right"><code>strip()</code></td><td align="left">Remove whitespace from start and end of the string</td></tr><tr><td align="right"><code>lstrip()</code></td><td align="left">Remove whitespace from the start of the string</td></tr><tr><td align="right"><code>rstrip()</code></td><td align="left">Remove whitespace from the end of the string</td></tr><tr><td align="right"><code>split()</code></td><td align="left">Split string into a list depending on the delimiter</td></tr><tr><td align="right"><code>zfill()</code></td><td align="left">Adds zeros at the beginning of the string, until it reaches the specified length (provided as argument).</td></tr></tbody></table>
+<h4 id="fstring---string-interpolation">Fstring - String interpolation</h4>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">name</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Mr. Client</span><span style="color:#89DDFF">"</span></span>
+<span class="line"><span style="color:#BABED8">balance</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> float</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 3000.5</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#BABED8">message</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#C792EA"> f</span><span style="color:#C3E88D">"Hello </span><span style="color:#F78C6C">{</span><span style="color:#BABED8">name</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">, your current balance is USD </span><span style="color:#F78C6C">{</span><span style="color:#BABED8">balance</span><span style="color:#C792EA">:.2f</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">"</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">message</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># Hello Mr. Client, your current balance is USD 3000.50</span></span></code></pre>
+<h4 id="formatting-rules">Formatting rules</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Operator</th><th align="left">Description</th></tr></thead><tbody><tr><td align="right"><code>%s</code></td><td align="left">Strings</td></tr><tr><td align="right"><code>%d</code></td><td align="left">Integers</td></tr><tr><td align="right"><code>%f</code></td><td align="left">Floats</td></tr><tr><td align="right"><code>%.3f</code></td><td align="left">Floating point number with 3 decimal points</td></tr><tr><td align="right"><code>%%</code></td><td align="left">Print out % symbol</td></tr></tbody></table>
+<h3 id="list">List</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 2</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 3</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 4</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 5</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># add element to end of list</span></span>
+<span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">append</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">6</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># insert element at start of list (i.e. index 0)</span></span>
+<span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">insert</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">0</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 10</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># remove item from list</span></span>
+<span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">remove</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">5</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># access element at index</span></span>
+<span class="line"><span style="color:#BABED8">result </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> nums</span><span style="color:#89DDFF">[</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># apply operation to all elements in list</span></span>
+<span class="line"><span style="color:#BABED8">mapped </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> map</span><span style="color:#89DDFF">(</span><span style="color:#C792EA">lambda</span><span style="color:#BABED8;font-style:italic"> n</span><span style="color:#89DDFF">:</span><span style="color:#82AAFF"> n </span><span style="color:#89DDFF">*</span><span style="color:#F78C6C"> 2</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> nums</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#FFCB6B">list</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">mapped</span><span style="color:#89DDFF">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># filter out elements based on criteria</span></span>
+<span class="line"><span style="color:#BABED8">filtered </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> filter</span><span style="color:#89DDFF">(</span><span style="color:#C792EA">lambda</span><span style="color:#BABED8;font-style:italic"> n</span><span style="color:#89DDFF">:</span><span style="color:#82AAFF"> n </span><span style="color:#89DDFF">%</span><span style="color:#F78C6C"> 2</span><span style="color:#89DDFF"> ==</span><span style="color:#F78C6C"> 0</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> nums</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#FFCB6B">list</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">filtered</span><span style="color:#89DDFF">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># sort a list - original is modified</span></span>
+<span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">sort</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">reverse</span><span style="color:#89DDFF">=False)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># loop through all elements in list (with index)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> i</span><span style="color:#89DDFF">,</span><span style="color:#BABED8"> v </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> enumerate</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">i</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> v</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># check if element does not exist in list</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#F78C6C"> 5</span><span style="color:#89DDFF"> not</span><span style="color:#89DDFF"> in</span><span style="color:#BABED8"> nums</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">5 does not exist inside list</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># list slices</span></span>
+<span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 2</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 3</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 4</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 5</span><span style="color:#89DDFF">]</span></span>
+<span class="line"><span style="color:#FFCB6B">slice</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> nums</span><span style="color:#89DDFF">[</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">:</span><span style="color:#F78C6C">3</span><span style="color:#89DDFF">]</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#FFCB6B">slice</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># list comprehensions</span></span>
+<span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#BABED8">n </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 5</span><span style="color:#89DDFF">)]</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">)</span><span style="color:#676E95;font-style:italic">                                 # [1, 2, 3, 4]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#BABED8">nums </span><span style="color:#89DDFF">=</span><span style="color:#89DDFF"> [(</span><span style="color:#BABED8">n</span><span style="color:#89DDFF">+</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">)*</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF;font-style:italic"> for</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 5</span><span style="color:#89DDFF">)]</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">)</span><span style="color:#676E95;font-style:italic">                                 # [20, 30, 40, 50]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#BABED8">base</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 21</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 32</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 44</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 55</span><span style="color:#89DDFF">]</span></span>
+<span class="line"><span style="color:#BABED8">nums </span><span style="color:#89DDFF">=</span><span style="color:#89DDFF"> [</span><span style="color:#BABED8">n </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> base </span><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF">%</span><span style="color:#F78C6C"> 2</span><span style="color:#89DDFF"> ==</span><span style="color:#F78C6C"> 0</span><span style="color:#89DDFF">]</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">)</span><span style="color:#676E95;font-style:italic">                                 # [10, 32, 44]</span></span></code></pre>
+<h3 id="tuple">Tuple</h3>
+<p>Tuples are an immutable collection of elements</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">values</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> tuple</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">,</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">,</span><span style="color:#FFCB6B"> bool</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> (</span><span style="color:#F78C6C">300</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Someone</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> True,)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">values</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># tuple comprehensions</span></span>
+<span class="line"><span style="color:#BABED8">nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> tuple</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">,</span><span style="color:#BABED8"> ...</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#FFCB6B"> tuple</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">n </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#82AAFF"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 4</span><span style="color:#89DDFF">))</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">)</span><span style="color:#676E95;font-style:italic">  # (1, 2, 3)</span></span></code></pre>
+<h3 id="sets">Sets</h3>
+<p>Sets is a list of unique values. Values inside sets don’t have index values. Sets cannot be sliced.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">numbers</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> set</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> {</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 20</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 30</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 20</span><span style="color:#89DDFF">}</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">numbers</span><span style="color:#89DDFF">)</span><span style="color:#676E95;font-style:italic">          # {10, 20, 30}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># add an element to set, order is not maintained</span></span>
+<span class="line"><span style="color:#BABED8">numbers</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">add</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">50</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">numbers</span><span style="color:#89DDFF">)</span><span style="color:#676E95;font-style:italic">          # {10, 50, 20, 30}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># remove an element from set</span></span>
+<span class="line"><span style="color:#BABED8">numbers</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">remove</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">numbers</span><span style="color:#89DDFF">)</span><span style="color:#676E95;font-style:italic">          # { 50, 20, 30}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># generate set using comprehensions</span></span>
+<span class="line"><span style="color:#BABED8">nums_set</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> set</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> {</span><span style="color:#BABED8">n </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 10</span><span style="color:#89DDFF">)}</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums_set</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h3 id="dictionary">Dictionary</h3>
+<p>A dictionary is like a list but unlike lists dictionaries are used to store Key-Value Pairs.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">capitals</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> dict</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">,</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#89DDFF">    "</span><span style="color:#C3E88D">Pakistan</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Islamabad</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span></span>
+<span class="line"><span style="color:#89DDFF">    "</span><span style="color:#C3E88D">China</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Beijing</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span></span>
+<span class="line"><span style="color:#89DDFF">    "</span><span style="color:#C3E88D">Japan</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Tokyo</span><span style="color:#89DDFF">"</span></span>
+<span class="line"><span style="color:#89DDFF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># read a value</span></span>
+<span class="line"><span style="color:#BABED8">value</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> |</span><span style="color:#89DDFF"> None</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> capitals</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">get</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">China</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#BABED8"> value</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">value</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># add new values</span></span>
+<span class="line"><span style="color:#BABED8">capitals</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">update</span><span style="color:#89DDFF">({</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">England</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">London</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># remove an item</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">del</span><span style="color:#BABED8"> capitals</span><span style="color:#89DDFF">[</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">China</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># check if value exists in dict</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Japan</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> in</span><span style="color:#BABED8"> capitals</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Japan exists in records</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># loop over dict key and value</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> k</span><span style="color:#89DDFF">,</span><span style="color:#BABED8"> v </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> capitals</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">items</span><span style="color:#89DDFF">():</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">k</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> v</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># Dictionary comprehensions</span></span>
+<span class="line"><span style="color:#BABED8">names</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Stark</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Banner</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Steve</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Romanoff</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">]</span></span>
+<span class="line"><span style="color:#BABED8">heroes</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Iron Man</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Hulk</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Captain America</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Black Widow</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#BABED8">identities</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> dict</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">,</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#BABED8">    name</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> hero </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> name</span><span style="color:#89DDFF">,</span><span style="color:#BABED8"> hero </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> zip</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">names</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> heroes</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">identities</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># {'Stark': 'Iron Man', 'Banner': 'Hulk', 'Steve': 'Captain America', 'Romanoff': 'Black Widow'}</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># Pass (and spread) dictionary to function</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> greet_user</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">name</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> email</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Hello </span><span style="color:#F78C6C">%s</span><span style="color:#C3E88D">, you have registered with email </span><span style="color:#F78C6C">%s</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> %</span><span style="color:#89DDFF"> (</span><span style="color:#82AAFF">name</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> email</span><span style="color:#89DDFF">))</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    args</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> dict</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">,</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> {</span></span>
+<span class="line"><span style="color:#89DDFF">        "</span><span style="color:#C3E88D">name</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">someone</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span></span>
+<span class="line"><span style="color:#89DDFF">        "</span><span style="color:#C3E88D">email</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">someone@site.com</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span></span>
+<span class="line"><span style="color:#89DDFF">    }</span></span>
+<span class="line"><span style="color:#82AAFF">    greet_user</span><span style="color:#89DDFF">(**</span><span style="color:#82AAFF">args</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h2 id="counter">Counter</h2>
+<p>Counter is a built-in class which can help keep track of item occurrences in lists.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> collections </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> Counter</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#BABED8">c </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> Counter</span><span style="color:#89DDFF">([</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Python</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">PHP</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">])</span></span>
+<span class="line"><span style="color:#BABED8">c</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">update</span><span style="color:#89DDFF">([</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Go</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">JS</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">])</span></span>
+<span class="line"><span style="color:#BABED8">c</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">update</span><span style="color:#89DDFF">([</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">PHP</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">JS</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">TS</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">])</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">c</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># Counter({'PHP': 2, 'JS': 2, 'Python': 1, 'Go': 1, 'TS': 1})</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">c</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">most_common</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">3</span><span style="color:#89DDFF">))</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># [('PHP', 2), ('JS', 2), ('Python', 1)]</span></span></code></pre>
+<h2 id="taking-input-from-user">Taking Input from User</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># interactive input</span></span>
+<span class="line"><span style="color:#BABED8">name</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#82AAFF"> input</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Please enter your name: </span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> sys</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># command-line arguments</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> arg </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> sys</span><span style="color:#89DDFF">.</span><span style="color:#F07178">argv</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">	    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">arg</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h2 id="functions">Functions</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># accept an unknown number of arguments</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> variadic_func</span><span style="color:#89DDFF">(*</span><span style="color:#BABED8;font-style:italic">args</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    for</span><span style="color:#BABED8"> arg </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> args</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">arg</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># program entry-point function</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#BABED8">n </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">)]</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">    variadic_func</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">hello</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">world</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># wrap entry-point function for error handling</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#BABED8"> __name__ </span><span style="color:#89DDFF">==</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">__main__</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    try</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        main</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    except</span><span style="color:#FFCB6B"> KeyboardInterrupt</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">gracefully shutting down...</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    except</span><span style="color:#FFCB6B"> Exception</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> err</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">error: </span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> err</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># pass by value</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> increment_num</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">num</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    num </span><span style="color:#89DDFF">+=</span><span style="color:#F78C6C"> 1</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    num</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 300</span></span>
+<span class="line"><span style="color:#82AAFF">    increment_num</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">num</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">num</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># 300</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># pass by reference</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> add_item</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">items</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">],</span><span style="color:#BABED8;font-style:italic"> new_item</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    items</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">append</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">new_item</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#BABED8">i </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> i </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 10</span><span style="color:#89DDFF">)]</span></span>
+<span class="line"><span style="color:#82AAFF">    add_item</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 300</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># [1, 2, 3, 4, 5, 6, 7, 8, 9, 300]</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># lambdas</span></span>
+<span class="line"><span style="color:#BABED8">square </span><span style="color:#89DDFF">=</span><span style="color:#C792EA"> lambda</span><span style="color:#BABED8;font-style:italic"> n</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> n</span><span style="color:#89DDFF">**</span><span style="color:#F78C6C">2</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># X is returned if X is larger than y, otherwise y is returned</span></span>
+<span class="line"><span style="color:#BABED8">greater </span><span style="color:#89DDFF">=</span><span style="color:#C792EA"> lambda</span><span style="color:#BABED8;font-style:italic"> x</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> y</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> x </span><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#BABED8"> x </span><span style="color:#89DDFF">></span><span style="color:#BABED8"> y </span><span style="color:#89DDFF;font-style:italic">else</span><span style="color:#BABED8"> y</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># Higher Order functions</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> typing </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> Callable</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># apply callback function to all values in the List</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> map</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">values</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">],</span><span style="color:#BABED8;font-style:italic"> callback</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> Callable</span><span style="color:#89DDFF">[[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">],</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">])</span><span style="color:#89DDFF"> -></span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    return</span><span style="color:#89DDFF"> [</span><span style="color:#82AAFF">callback</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">v</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> for</span><span style="color:#BABED8"> v </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> values</span><span style="color:#89DDFF">]</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#BABED8">n </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">)]</span></span>
+<span class="line"><span style="color:#BABED8">    new_nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#82AAFF"> map</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">nums</span><span style="color:#89DDFF">,</span><span style="color:#C792EA"> lambda</span><span style="color:#BABED8;font-style:italic"> n</span><span style="color:#89DDFF">:</span><span style="color:#82AAFF"> n </span><span style="color:#89DDFF">*</span><span style="color:#F78C6C"> 2</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># closures</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> typing </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> Callable</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> generate_tag</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">html_tag</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#BABED8"> Callable</span><span style="color:#89DDFF">[[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">],</span><span style="color:#89DDFF"> None]:</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # free variable</span></span>
+<span class="line"><span style="color:#BABED8">    tag </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> html_tag</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> inline_msg</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">msg</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">        html_code </span><span style="color:#89DDFF">=</span><span style="color:#C792EA"> f</span><span style="color:#C3E88D">"&#x3C;</span><span style="color:#F78C6C">{</span><span style="color:#BABED8">tag</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">></span><span style="color:#F78C6C">{</span><span style="color:#BABED8">msg</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">&#x3C;/</span><span style="color:#F78C6C">{</span><span style="color:#BABED8">tag</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">>"</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">html_code</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # return the inner function</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    return</span><span style="color:#BABED8"> inline_msg</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # run the outer function and assign inner function to variable (i.e. heading_1)</span></span>
+<span class="line"><span style="color:#BABED8">    heading_1 </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> generate_tag</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">h1</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # run the inner function</span></span>
+<span class="line"><span style="color:#82AAFF">    heading_1</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">This is a heading</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">    heading_1</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">This is another heading</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># generators</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> typing </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> Iterator</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># produce a generator</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> list_generator</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">start</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> end</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#BABED8"> Iterator</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    for</span><span style="color:#BABED8"> element </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">start</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> end</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        yield</span><span style="color:#BABED8"> element</span><span style="color:#89DDFF">**</span><span style="color:#F78C6C">2</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    results </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> list_generator</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 10</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # prints reference of generator</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">results</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # prints first value: 1</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">next</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">results</span><span style="color:#89DDFF">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # loops over all remaining values</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    for</span><span style="color:#BABED8"> i </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> results</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">i</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># Iterators</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> __future__ </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> annotations</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">class</span><span style="color:#FFCB6B"> RangeIterator</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">    i</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 0</span></span>
+<span class="line"><span style="color:#BABED8">    limit</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __init__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> limit</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">limit</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> limit</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __iter__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#BABED8"> RangeIterator</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        return</span><span style="color:#BABED8"> self</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __next__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">i</span><span style="color:#89DDFF"> +=</span><span style="color:#F78C6C"> 1</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        if</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">i</span><span style="color:#89DDFF"> >=</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">limit</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">            raise</span><span style="color:#FFCB6B"> StopIteration</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        return</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">i</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    for</span><span style="color:#BABED8"> i </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> RangeIterator</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">i</span><span style="color:#89DDFF">)</span></span></code></pre>
+<p><strong>Note</strong>: Above code can be made even better in <strong>Python 3.11</strong> by using the <code>Self</code> type.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> typing </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> Self</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">class</span><span style="color:#FFCB6B"> RangeIterator</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">    i</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 0</span></span>
+<span class="line"><span style="color:#BABED8">    limit</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __init__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> limit</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">limit</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> limit</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __iter__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#BABED8"> Self</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        return</span><span style="color:#BABED8"> self</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __next__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">i</span><span style="color:#89DDFF"> +=</span><span style="color:#F78C6C"> 1</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        if</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">i</span><span style="color:#89DDFF"> >=</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">limit</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">            raise</span><span style="color:#FFCB6B"> StopIteration</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        return</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">i</span></span></code></pre>
+<h2 id="exception-handling">Exception Handling</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    entry</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#82AAFF"> input</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Enter Pin: </span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#BABED8">    pin</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 12345</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    if</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">entry</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> ==</span><span style="color:#BABED8"> pin</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">correct pin</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    else</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">incorrect pin</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#BABED8"> __name__ </span><span style="color:#89DDFF">==</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">__main__</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    try</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        main</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    except</span><span style="color:#FFCB6B"> ValueError</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">error: pin cannon contain non-numeric characters</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    except</span><span style="color:#FFCB6B"> KeyboardInterrupt</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">ctrl+c: closing program...</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    except</span><span style="color:#FFCB6B"> Exception</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> err</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">error: </span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> err</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h2 id="file-handling">File Handling</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">./sample.txt</span><span style="color:#89DDFF">"</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # use context manager: file will be automatically closed</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    with</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">path</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">r</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">        # read entire content into memory</span></span>
+<span class="line"><span style="color:#BABED8">        content</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">read</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">content</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h3 id="file-modes">File modes</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Operator</th><th align="left">Description</th></tr></thead><tbody><tr><td align="right"><code>r</code></td><td align="left">Read-only</td></tr><tr><td align="right"><code>w</code></td><td align="left">Write mode. If the file doesn’t exist, create it. If the file already exists, <strong>overwrite</strong> it</td></tr><tr><td align="right"><code>a</code></td><td align="left">Append mode, write to the end of the file. Never overwrite.</td></tr><tr><td align="right"><code>r+</code></td><td align="left">Open file in read and write mode</td></tr><tr><td align="right"><code>t</code></td><td align="left">Text mode</td></tr><tr><td align="right"><code>b</code></td><td align="left">Binary mode</td></tr></tbody></table>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># read file, line-by-line</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">./sample.txt</span><span style="color:#89DDFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    with</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">path</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">r</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        for</span><span style="color:#BABED8"> line </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">line</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># reading files in chunks</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">./sample.txt</span><span style="color:#89DDFF">"</span></span>
+<span class="line"><span style="color:#BABED8">    chunk_size</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#F78C6C"> 64</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    with</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">path</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">r</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">        content</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">read</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">chunk_size</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        while</span><span style="color:#82AAFF"> len</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">content</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> ></span><span style="color:#F78C6C"> 0</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#82AAFF">            print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">content</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#BABED8">            content </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">read</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">chunk_size</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h3 id="writing-to-files">Writing to files</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">./sample.txt</span><span style="color:#89DDFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    with</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">path</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">w</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">        file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">write</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">This is line one</span><span style="color:#BABED8">\n</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#BABED8">        file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">write</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">This is line two</span><span style="color:#BABED8">\n</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#676E95;font-style:italic"># copy binary files</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">    input_file_path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">./input.jpg</span><span style="color:#89DDFF">"</span></span>
+<span class="line"><span style="color:#BABED8">    output_file_path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">./output.jpg</span><span style="color:#89DDFF">"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    with</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">input_file_path</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">rb</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> read_file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        with</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">output_file_path</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">wb</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> write_file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">            for</span><span style="color:#BABED8"> line </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> read_file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">                write_file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">write</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">line</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h2 id="context-managers">Context Managers</h2>
+<p>Context managers help manage resources effectively. Even in case of errors, they ensure that the resource is disconnected properly.</p>
+<h3 id="define-using-classes">Define using Classes</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#C792EA">class</span><span style="color:#FFCB6B"> open_file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __init__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> filename</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> mode</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">filename</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> filename</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">mode</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> mode</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # context setUp</span></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __enter__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">file</span><span style="color:#89DDFF"> =</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#BABED8">self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">filename</span><span style="color:#89DDFF">,</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">mode</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        return</span><span style="color:#BABED8"> self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">file</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # context tearDown</span></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> __exit__</span><span style="color:#89DDFF">(</span><span style="color:#F07178;font-style:italic">self</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> exc_type</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> exc_val</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> traceback</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#BABED8">        self</span><span style="color:#89DDFF">.</span><span style="color:#F07178">file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">close</span><span style="color:#89DDFF">()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # using the context manager</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    with</span><span style="color:#82AAFF"> open_file</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">./sample.txt</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">a</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">        file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">write</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Sample text</span><span style="color:#BABED8">\n</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h3 id="define-using-decorators-recommended">Define using Decorators (recommended)</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> contextlib </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> contextmanager</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF">@</span><span style="color:#82AAFF">contextmanager</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> open_file</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">filename</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> mode</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    try</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">        # init</span></span>
+<span class="line"><span style="color:#BABED8">        file </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> open</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">filename</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> mode</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">        # enter i.e. setUp</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        yield</span><span style="color:#BABED8"> file</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    finally</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">        # exit i.e. tearDown</span></span>
+<span class="line"><span style="color:#BABED8">        file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">close</span><span style="color:#89DDFF">()</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    with</span><span style="color:#82AAFF"> open_file</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">./sample.txt</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">a</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> as</span><span style="color:#BABED8"> file</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">        file</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">write</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Some sample text</span><span style="color:#BABED8">\n</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h2 id="environment-variables">Environment variables</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> os</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # read an environment variable</span></span>
+<span class="line"><span style="color:#BABED8">    home</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> |</span><span style="color:#89DDFF"> None</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">getenv</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">HOME</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">home</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    # list all env variables, environ is dict[str, str]</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    for</span><span style="color:#BABED8"> k</span><span style="color:#89DDFF">,</span><span style="color:#BABED8"> v </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#BABED8"> os</span><span style="color:#89DDFF">.</span><span style="color:#F07178">environ</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">items</span><span style="color:#89DDFF">():</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">k</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> v</span><span style="color:#89DDFF">)</span></span></code></pre>
+<p><strong>Note</strong>: For loading <code>.env</code> files, please look at the package <code>dotenv</code>.</p>
+<h2 id="filesystem">Filesystem</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> os</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> os </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> path</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># get current directory</span></span>
+<span class="line"><span style="color:#BABED8">pwd</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">getcwd</span><span style="color:#89DDFF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># create path</span></span>
+<span class="line"><span style="color:#BABED8">current_path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> path</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">join</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">pwd</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">.gitignore</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># change current directory</span></span>
+<span class="line"><span style="color:#BABED8">new_path</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> path</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">join</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">pwd</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">.git</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#BABED8">os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">chdir</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">new_path</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># list all items in directory</span></span>
+<span class="line"><span style="color:#BABED8">content</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">listdir</span><span style="color:#89DDFF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># get basename (i.e. filename) from path</span></span>
+<span class="line"><span style="color:#BABED8">filename</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> path</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">basename</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">current_path</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># get directory name from path</span></span>
+<span class="line"><span style="color:#BABED8">directory</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> path</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">dirname</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">current_path</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># check if path exists</span></span>
+<span class="line"><span style="color:#BABED8">path_exits</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> bool</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> path</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">exists</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">current_path</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># check if path is file</span></span>
+<span class="line"><span style="color:#BABED8">is_path_file</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> bool</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> path</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">isfile</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">current_path</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># check if path is a directory</span></span>
+<span class="line"><span style="color:#BABED8">is_path_dir</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> bool</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> path</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">isdir</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">current_path</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># create a new folder</span></span>
+<span class="line"><span style="color:#BABED8">os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">mkdir</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">sample</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># create a folder few levels deep</span></span>
+<span class="line"><span style="color:#BABED8">os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">makedirs</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">./New/Folder/NEW</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># remove a directory</span></span>
+<span class="line"><span style="color:#BABED8">os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">rmdir</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">New Folder</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># remove directories few levels deep</span></span>
+<span class="line"><span style="color:#BABED8">os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">removedirs</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">./New/Folder/NEW</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># rename files and Folders</span></span>
+<span class="line"><span style="color:#BABED8">os</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">rename</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">NEW</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">New-Folder</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h2 id="json">JSON</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Method</th><th align="left">Description</th></tr></thead><tbody><tr><td align="right"><code>json.loads(var)</code></td><td align="left">Load string as JSON</td></tr><tr><td align="right"><code>json.dumps(var)</code></td><td align="left">Encode and return JSON string</td></tr><tr><td align="right"><code>json.load(file_obj)</code></td><td align="left">Read JSON file from file. Open file nees to be provided</td></tr><tr><td align="right"><code>json.dump(data_obj, file_obj)</code></td><td align="left">Write JSON to provided file</td></tr></tbody></table>
+<h2 id="random">Random</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> random</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># random number between 0 and 1</span></span>
+<span class="line"><span style="color:#BABED8">float_num</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> float</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> random</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">random</span><span style="color:#89DDFF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># random float between provided range, end is non-inclusive</span></span>
+<span class="line"><span style="color:#BABED8">float_num </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> random</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">uniform</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 20</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># random int, end is non-inclusive</span></span>
+<span class="line"><span style="color:#BABED8">int_num</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> random</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">randint</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 20</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># pick a random value from list</span></span>
+<span class="line"><span style="color:#BABED8">choices</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Pakistan</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">China</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">Canada</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">]</span></span>
+<span class="line"><span style="color:#BABED8">random_choice</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> random</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">choice</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">choices</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># random shuffle elements in list, updates original list</span></span>
+<span class="line"><span style="color:#BABED8">even_nums</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#89DDFF"> [</span><span style="color:#BABED8">n </span><span style="color:#89DDFF;font-style:italic">for</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">10</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 30</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF;font-style:italic"> if</span><span style="color:#BABED8"> n </span><span style="color:#89DDFF">%</span><span style="color:#F78C6C"> 2</span><span style="color:#89DDFF"> ==</span><span style="color:#F78C6C"> 0</span><span style="color:#89DDFF">]</span></span>
+<span class="line"><span style="color:#BABED8">random</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">shuffle</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">even_nums</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># grab random sample from a list, k is number of items to grab</span></span>
+<span class="line"><span style="color:#BABED8">sample_items</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> list</span><span style="color:#89DDFF">[</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">]</span><span style="color:#89DDFF"> =</span><span style="color:#BABED8"> random</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">sample</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">even_nums</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> k</span><span style="color:#89DDFF">=</span><span style="color:#F78C6C">3</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h2 id="dates">Dates</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> datetime</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># create date instance</span></span>
+<span class="line"><span style="color:#BABED8">future_date </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">date</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">2023</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 4</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 21</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># get current date</span></span>
+<span class="line"><span style="color:#BABED8">today </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#F07178">date</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">today</span><span style="color:#89DDFF">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># get components of date</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#F78C6C">%s</span><span style="color:#C3E88D">, </span><span style="color:#F78C6C">%s</span><span style="color:#C3E88D">, </span><span style="color:#F78C6C">%s</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> %</span><span style="color:#89DDFF"> (</span><span style="color:#82AAFF">today</span><span style="color:#89DDFF">.</span><span style="color:#F07178">year</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> today</span><span style="color:#89DDFF">.</span><span style="color:#F07178">month</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> today</span><span style="color:#89DDFF">.</span><span style="color:#F07178">day</span><span style="color:#89DDFF">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># get date after n days</span></span>
+<span class="line"><span style="color:#BABED8">week_delta </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">timedelta</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">days</span><span style="color:#89DDFF">=</span><span style="color:#F78C6C">7</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># date next week</span></span>
+<span class="line"><span style="color:#BABED8">next_week </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> today </span><span style="color:#89DDFF">+</span><span style="color:#BABED8"> week_delta</span></span></code></pre>
+<h3 id="track-time-of-execution">Track time of execution</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> typing </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> Callable</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> datetime</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># track execution time decorator</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> time_execution</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">func</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> Callable</span><span style="color:#89DDFF">[[],</span><span style="color:#89DDFF"> None])</span><span style="color:#89DDFF"> -></span><span style="color:#BABED8"> Callable</span><span style="color:#89DDFF">[[],</span><span style="color:#89DDFF"> None]:</span></span>
+<span class="line"><span style="color:#C792EA">    def</span><span style="color:#82AAFF"> wrapper</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#BABED8">        timer_start </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#F07178">datetime</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">now</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#82AAFF">        func</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#BABED8">        timer_end </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#F07178">datetime</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">now</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#BABED8">        elapsed </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> timer_end </span><span style="color:#89DDFF">-</span><span style="color:#BABED8"> timer_start</span></span>
+<span class="line"><span style="color:#82AAFF">        print</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">elapsed: </span><span style="color:#F78C6C">%s</span><span style="color:#C3E88D"> ms</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF"> %</span><span style="color:#89DDFF"> (</span><span style="color:#82AAFF">elapsed</span><span style="color:#89DDFF">.</span><span style="color:#F07178">microseconds</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> ))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    return</span><span style="color:#BABED8"> wrapper</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF">@</span><span style="color:#82AAFF">time_execution</span></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> slow_task</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">    for</span><span style="color:#BABED8"> i </span><span style="color:#89DDFF;font-style:italic">in</span><span style="color:#82AAFF"> range</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">1</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 1000000</span><span style="color:#89DDFF">):</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">        pass</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">()</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#82AAFF">    slow_task</span><span style="color:#89DDFF">()</span></span></code></pre>
+<h3 id="time">Time</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">time </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">time</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">22</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 10</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 50</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 1000</span><span style="color:#89DDFF"> )</span><span style="color:#676E95;font-style:italic">	# hours, minutes, seconds, milliseconds</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">time</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># output: 22:10:50.001000</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># print current time</span></span>
+<span class="line"><span style="color:#BABED8">time </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#F07178">datetime</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">now</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#C792EA">f</span><span style="color:#C3E88D">"</span><span style="color:#F78C6C">{</span><span style="color:#82AAFF">time</span><span style="color:#89DDFF">:</span><span style="color:#89DDFF"> %</span><span style="color:#82AAFF">H</span><span style="color:#89DDFF">:%</span><span style="color:#82AAFF">M</span><span style="color:#89DDFF">:%</span><span style="color:#82AAFF">S</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">"</span><span style="color:#89DDFF">)</span></span></code></pre>
+<h3 id="date-time">Date-time</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#BABED8">time </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> datetime</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">datetime</span><span style="color:#89DDFF">(</span><span style="color:#F78C6C">2016</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 9</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 13</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 22</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 10</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 50</span><span style="color:#89DDFF">,</span><span style="color:#F78C6C"> 1000</span><span style="color:#89DDFF"> )</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic"># year, month, date, hour, minutes, seconds, milliseconds</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">time</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">time</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">date</span><span style="color:#89DDFF">())</span><span style="color:#676E95;font-style:italic">		# 2016-09-13</span></span>
+<span class="line"><span style="color:#82AAFF">print</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">time</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">time</span><span style="color:#89DDFF">())</span><span style="color:#676E95;font-style:italic">		# 22:10:50.001000</span></span></code></pre>
+<h2 id="parse-arguments">Parse Arguments</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="python"><code><span class="line"><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> argparse</span></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">from</span><span style="color:#BABED8"> dataclasses </span><span style="color:#89DDFF;font-style:italic">import</span><span style="color:#BABED8"> dataclass</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF">@</span><span style="color:#82AAFF">dataclass</span></span>
+<span class="line"><span style="color:#C792EA">class</span><span style="color:#FFCB6B"> Args</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">    name</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> str</span></span>
+<span class="line"><span style="color:#BABED8">    year</span><span style="color:#89DDFF">:</span><span style="color:#FFCB6B"> int</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA">def</span><span style="color:#82AAFF"> main</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">args</span><span style="color:#89DDFF">:</span><span style="color:#BABED8"> Args</span><span style="color:#89DDFF">)</span><span style="color:#89DDFF"> -></span><span style="color:#89DDFF"> None:</span></span>
+<span class="line"><span style="color:#82AAFF">    print</span><span style="color:#89DDFF">(</span><span style="color:#C792EA">f</span><span style="color:#C3E88D">"Hello </span><span style="color:#F78C6C">{</span><span style="color:#82AAFF">args</span><span style="color:#89DDFF">.</span><span style="color:#F07178">name</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">, you were born in </span><span style="color:#F78C6C">{</span><span style="color:#82AAFF">args</span><span style="color:#89DDFF">.</span><span style="color:#F07178">year</span><span style="color:#F78C6C">}</span><span style="color:#C3E88D">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic">if</span><span style="color:#BABED8"> __name__ </span><span style="color:#89DDFF">==</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">__main__</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">:</span></span>
+<span class="line"><span style="color:#BABED8">    parser </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> argparse</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">ArgumentParser</span><span style="color:#89DDFF">(</span><span style="color:#BABED8;font-style:italic">description</span><span style="color:#89DDFF">=</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">Program description</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#BABED8">    parser</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">add_argument</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">-n</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">--name</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> type</span><span style="color:#89DDFF">=</span><span style="color:#FFCB6B">str</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> help</span><span style="color:#89DDFF">=</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">username</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> default</span><span style="color:#89DDFF">=</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">User</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#BABED8">    parser</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">add_argument</span><span style="color:#89DDFF">(</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">-y</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">--year</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> type</span><span style="color:#89DDFF">=</span><span style="color:#FFCB6B">int</span><span style="color:#89DDFF">,</span><span style="color:#BABED8;font-style:italic"> help</span><span style="color:#89DDFF">=</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">year of birth</span><span style="color:#89DDFF">"</span><span style="color:#89DDFF">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#BABED8">    parsed </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> parser</span><span style="color:#89DDFF">.</span><span style="color:#82AAFF">parse_args</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#BABED8">    args </span><span style="color:#89DDFF">=</span><span style="color:#82AAFF"> Args</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">parsed</span><span style="color:#89DDFF">.</span><span style="color:#F07178">name</span><span style="color:#89DDFF">,</span><span style="color:#82AAFF"> parsed</span><span style="color:#89DDFF">.</span><span style="color:#F07178">year</span><span style="color:#89DDFF">)</span></span>
+<span class="line"><span style="color:#82AAFF">    main</span><span style="color:#89DDFF">(</span><span style="color:#82AAFF">args</span><span style="color:#89DDFF">)</span></span></code></pre> </div> </div> </div>  </div>  </main> <footer class="py-4 bg-gray-200 text-gray-500"> <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <div class="flex"> <span class="text-sm mx-auto">© 2025 - Muhammad Moeen</span> </div>  </div> </footer> <div data-scrollbuttoncontainer class="transition-all duration-300 opacity-0 cursor-pointer"> <button data-scrollbutton title="Go To Top" class="fixed z-90 bottom-8 right-8 border-0 w-12 h-12 rounded-full drop-shadow-md bg-black text-white text-3xl font-bold"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 m-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5"></path> </svg> </button> </div> <script src="/scripts/scrolltop.js" defer></script> </body></html>
