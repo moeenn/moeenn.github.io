@@ -1,0 +1,982 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="utf-8"><link rel="icon" type="image/jpg" href="/favicon.webp"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.16.5"><script src="/scripts/gTagManager.js"></script><meta name="title" content="M. Moeen - PostgreSQL essentials"><meta name="description" content="PostgreSQL is one of the most powerful and featurful opensource RDBMS available right now. It is flexible enough to meet the storage needs of most web applications. In this article walk through the PostgreSQL's SQL dialect essentials."><meta property="og:title" content="M. Moeen - PostgreSQL essentials"><meta property="og:description" content="PostgreSQL is one of the most powerful and featurful opensource RDBMS available right now. It is flexible enough to meet the storage needs of most web applications. In this article walk through the PostgreSQL's SQL dialect essentials."><meta property="og:image" content="https://moeenn.github.io/logo.webp"><meta property="og:url" content="https://moeenn.github.io/blogs/undefined"><meta property="og:site_name" content="M. Moeen - PostgreSQL essentials"><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://moeenn.github.io/blogs/undefined"><meta property="twitter:title" content="M. Moeen - PostgreSQL essentials"><meta property="twitter:image" content="https://moeenn.github.io/logo.webp"><meta property="twitter:description" content="PostgreSQL is one of the most powerful and featurful opensource RDBMS available right now. It is flexible enough to meet the storage needs of most web applications. In this article walk through the PostgreSQL's SQL dialect essentials."><title>M. Moeen - PostgreSQL essentials</title><link rel="stylesheet" href="/assets/blogs.BL-tQ2To.css"></head> <body class="text-black h-screen flex flex-col"> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6RFWPQD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <nav> <div class="pt-8 pb-4 flex justify-between"> <a class="my-auto cursor-pointer" href="/#"> <span class="font-mono pb-1 pt-2 font-bold text-white bg-gray-900 px-3 py-1 rounded">M.M</span> </a> <div class="block md:hidden"> <div class="flex space-x-2"> <a href="https://github.com/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="Github"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"> <rect width="256" height="256" fill="none"></rect><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,208H72a32,32,0,0,1-32-32A32,32,0,0,0,8,144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path> </svg> </a> <a href="https://www.linkedin.com/in/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="LinkedIn"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="88" cy="84" r="12"></circle></svg> </a> <div data-navbutton class="hover:bg-gray-200 rounded p-2 cursor-pointer"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-700 h-6 w-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5"></path> </svg> </div> </div> </div> <div class="hidden md:flex md:space-x-2"> <a href="/#career" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Career </a><a href="/#projects" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Projects </a><a href="/#tools" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Skills &amp; Tools </a><a href="/#contact" class="px-3 py-2 text-black text-sm my-auto border-b-2 border-transparent hover:border-black hover:bg-gray-200 rounded-t transition-colors"> Contact Me </a> <a href="/blogs" class="px-3 py-2 font-bold text-black text-sm my-auto hover:bg-gray-200 border-b-2 border-transparent hover:border-black rounded-t transition-colors">
+Blogs
+</a> <div class="flex px-2"> <span class="my-auto text-gray-300">|</span> </div> <div class="flex space-x-2"> <a href="https://github.com/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="Github"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"> <rect width="256" height="256" fill="none"></rect><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><path d="M104,208H72a32,32,0,0,1-32-32A32,32,0,0,0,8,144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path> </svg> </a> <a href="https://www.linkedin.com/in/moeenn" target="_blank" class="my-auto hover:bg-gray-200 transition-colors rounded-full h-10 w-10 inline-flex" title="LinkedIn"> <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></rect><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><circle cx="88" cy="84" r="12"></circle></svg> </a> </div> </div> </div> <div data-mobilemenu class="hidden"> <div class="flex flex-col md:hidden bg-gray-100 rounded"> <a href="/#career" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Career </a><a href="/#projects" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Projects </a><a href="/#tools" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Skills &amp; Tools </a><a href="/#contact" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded"> Contact Me </a> <a href="/blogs" class="px-3 py-4 text-black leading-none hover:bg-gray-300 text-sm my-auto transition-colors mb-0 rounded">
+Blogs
+</a> </div> </div> </nav> <script src="/scripts/navbar.js" defer></script>  </div> <main class="flex-1">  <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <div class="pt-8 pb-14"> <div class="pb-8"> <a href="/blogs" class="text-sm bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-full inline-flex space-x-2"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 my-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path> </svg> <span class="my-auto leading-none">Back</span></a> </div> <h2 class="text-2xl space-x-2 mb-2"> <span class="font-normal text-gray-500">#</span> <span class="text-gray-900">PostgreSQL essentials</span> </h2> <div class="flex flex-wrap gap-2 mb-6"> <span class="text-xs bg-gray-200 hover:bg-gray-300 rounded px-2 py-1"> SQL </span> <span class="text-xs bg-gray-200 hover:bg-gray-300 rounded px-2 py-1"> Database </span><span class="text-xs bg-gray-200 hover:bg-gray-300 rounded px-2 py-1"> Fundamentals </span> </div> <div class="grid grid-cols-1 xl:grid-cols-4"> <div class="xl:order-last xl:pl-6 h-full"> <div class="xl:sticky xl:top-4"> <p class="font-medium text-gray-700 mb-2">
+Table of content
+</p> <a data-level="2" href="#connecting-to-database" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Connecting to Database </a><a data-level="3" href="#through-psql" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Through psql </a><a data-level="3" href="#connection-string" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Connection string </a><a data-level="2" href="#exporting-existing-db-schema" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Exporting existing DB schema </a><a data-level="2" href="#comments" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Comments </a><a data-level="2" href="#databases" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Databases </a><a data-level="2" href="#drop-all-content-of-database" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Drop all content of database </a><a data-level="2" href="#column-data-types" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Column Data types </a><a data-level="2" href="#constraints" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Constraints </a><a data-level="3" href="#example-product-price-and-discounted-price" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Example: Product price and discounted price </a><a data-level="3" href="#example-unique-combinations" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Example: Unique combinations </a><a data-level="2" href="#tables" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Tables </a><a data-level="2" href="#uuid" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> UUID </a><a data-level="3" href="#why-use-uuid-over-bigserial-as-primary-key" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Why use UUID over BIGSERIAL as primary key? </a><a data-level="3" href="#array-columns" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Array Columns </a><a data-level="3" href="#insert-data-into-table" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Insert Data into Table </a><a data-level="2" href="#enumerations" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Enumerations </a><a data-level="3" href="#alternative-approach" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Alternative approach </a><a data-level="2" href="#domain-types" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Domain types </a><a data-level="2" href="#composite-types" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Composite types </a><a data-level="2" href="#pagination" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Pagination </a><a data-level="3" href="#example" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Example </a><a data-level="2" href="#relationships" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Relationships </a><a data-level="3" href="#one-to-one" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> One-to-one </a><a data-level="3" href="#one-to-many" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> One-to-many </a><a data-level="3" href="#many-to-many" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Many-to-many </a><a data-level="3" href="#relationships-and-delete-cascades" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Relationships and Delete cascades </a><a data-level="2" href="#json-aggregation" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> JSON Aggregation </a><a data-level="3" href="#a-better-implementation" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> A better implementation </a><a data-level="2" href="#transactions" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Transactions </a><a data-level="3" href="#acid" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> ACID </a><a data-level="2" href="#performance-optimisations" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Performance optimisations </a><a data-level="3" href="#prepared-statements" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Prepared statements </a><a data-level="3" href="#indexing" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Indexing </a><a data-level="3" href="#partitioning" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Partitioning </a><a data-level="3" href="#stored-procedures" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Stored Procedures </a><a data-level="3" href="#stored-functions" style="margin-left: 0.75rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Stored functions </a><a data-level="2" href="#hashing-passwords-inside-postgresql" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Hashing passwords inside PostgreSQL </a><a data-level="2" href="#views" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Views </a><a data-level="2" href="#n1-query-problem" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> N+1 query problem </a><a data-level="2" href="#optional-filter-parameters" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> Optional filter parameters </a><a data-level="2" href="#to-do" style="margin-left: 0rem" class="block text-sm pb-1 hover:underline underline-offset-4"> To-do </a> </div> </div> <div class="xl:order-first xl:col-span-3 prose-xl prose-p:leading-relaxed prose-p:text-base prose-li:leading-relaxed prose-li:text-base prose-li:p-0 prose-li:my-1 prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h4:text-md prose-headings:mb-2 prose-headings:mt-12 prose-headings:scroll-mt-4 prose-pre:mt-2 prose-pre:text-base prose-pre:leading-6 prose-ul:list-disc prose-table:border prose-table:border-gray-300 prose-table:w-full prose-table:mb-10 prose-tr:border prose-tr:border-gray-300 prose-th:border-x prose-th:border-gray-300 prose-th:py-1 prose-th:bg-gray-100 prose-td:border-x prose-td:border-gray-300 prose-td:py-1"> <p class="mt-8 xl:mt-0">PostgreSQL is one of the most powerful and featurful opensource RDBMS available right now. It is flexible enough to meet the storage needs of most web applications. In this article walk through the PostgreSQL&#39;s SQL dialect essentials.</p> <h2 id="connecting-to-database">Connecting to Database</h2>
+<h3 id="through-psql">Through <code>psql</code></h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFCB6B">$</span><span style="color:#C3E88D"> psql</span><span style="color:#C3E88D"> -h</span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">hostnam</span><span style="color:#BABED8">e</span><span style="color:#89DDFF">></span><span style="color:#C3E88D"> -p</span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">por</span><span style="color:#BABED8">t</span><span style="color:#89DDFF">></span><span style="color:#C3E88D"> -d</span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">databas</span><span style="color:#BABED8">e</span><span style="color:#89DDFF">></span><span style="color:#C3E88D"> -U</span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">usernam</span><span style="color:#BABED8">e</span><span style="color:#89DDFF">></span></span></code></pre>
+<h3 id="connection-string">Connection string</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>postgresql://devuser:devpass@localhost:5432/dev?sslmode=disable</span></span></code></pre>
+<h2 id="exporting-existing-db-schema">Exporting existing DB schema</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFCB6B">pg_dump</span><span style="color:#C3E88D"> --schema-only</span><span style="color:#C3E88D"> --no-acl</span><span style="color:#BABED8"> $DATABASE_URL </span><span style="color:#89DDFF">></span><span style="color:#C3E88D"> migrations/0000-init.sql</span></span></code></pre>
+<h2 id="comments">Comments</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- this style is used, as comments to document SQL statements</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span><span style="color:#89DDFF"> *</span><span style="color:#F78C6C"> FROM</span><span style="color:#676E95;font-style:italic"> /* test */</span><span style="color:#BABED8"> users;</span></span></code></pre>
+<h2 id="databases">Databases</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- create an new database</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> DATABASE</span><span style="color:#82AAFF"> sample</span><span style="color:#BABED8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- delete a database</span></span>
+<span class="line"><span style="color:#F78C6C">DROP</span><span style="color:#F78C6C"> DATABASE</span><span style="color:#F78C6C"> sample</span><span style="color:#BABED8">;</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#676E95;font-style:italic"># create new db using PostgreSQL shell</span></span>
+<span class="line"><span style="color:#FFCB6B">$</span><span style="color:#C3E88D"> psql</span><span style="color:#C3E88D"> -h</span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">Hos</span><span style="color:#BABED8">t</span><span style="color:#89DDFF">></span><span style="color:#C3E88D"> -p</span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">Por</span><span style="color:#BABED8">t</span><span style="color:#89DDFF">></span><span style="color:#C3E88D"> -U</span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">Use</span><span style="color:#BABED8">r</span><span style="color:#89DDFF">></span><span style="color:#89DDFF"> &#x3C;</span><span style="color:#C3E88D">databas</span><span style="color:#BABED8">e</span><span style="color:#89DDFF">></span><span style="color:#C3E88D"> --command=</span><span style="color:#89DDFF">"</span><span style="color:#C3E88D">CREATE DATABASE &#x3C;db_name> WITH OWNER &#x3C;User></span><span style="color:#89DDFF">"</span></span></code></pre>
+<h2 id="drop-all-content-of-database">Drop all content of database</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">DROP</span><span style="color:#F78C6C"> SCHEMA</span><span style="color:#BABED8"> public CASCADE;</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> SCHEMA</span><span style="color:#82AAFF"> public</span><span style="color:#BABED8">;</span></span></code></pre>
+<h2 id="column-data-types">Column Data types</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Type</th><th align="left">Description</th></tr></thead><tbody><tr><td align="right"><code>INT</code></td><td align="left">Signed four-byte integer</td></tr><tr><td align="right"><code>BIGINT</code></td><td align="left">Signed 64-Bit (i.e. 8-Byte) integer. Can be used to store money values in cents.</td></tr><tr><td align="right"><code>NUMERIC</code></td><td align="left">A number type with very high precision, supporting floating point numbers without the hassle of rounding-off errors. <strong>The best choice for storing money values</strong>.</td></tr><tr><td align="right"><code>BOOL</code></td><td align="left">Logical Boolean (<code>TRUE</code> / <code>FALSE</code>)</td></tr><tr><td align="right"><code>CHAR (n)</code></td><td align="left">Fixed-length character string</td></tr><tr><td align="right"><code>VARCHAR (n)</code></td><td align="left">Variable-length character string</td></tr><tr><td align="right"><code>TEXT</code></td><td align="left">Variable-length character string</td></tr><tr><td align="right"><code>UUID</code></td><td align="left">Universally unique identifier. Takes up 128-Bits of storage.</td></tr><tr><td align="right"><code>DATE</code></td><td align="left">Calendar date (year, month, day)</td></tr><tr><td align="right"><code>FLOAT8</code></td><td align="left">Double precision floating-point number (8 bytes). Avoid using in production because has precision problems</td></tr><tr><td align="right"><code>DECIMAL(15,2)</code></td><td align="left">Store amount to exactly 2-decimal points. Used by most general ledger software</td></tr><tr><td align="right"><code>INET</code></td><td align="left">IPv4 or IPv6 host address</td></tr><tr><td align="right"><code>INTERVAL</code></td><td align="left">Time span</td></tr><tr><td align="right"><code>JSON</code></td><td align="left">Textual JSON data</td></tr><tr><td align="right"><code>SMALLINT</code></td><td align="left">Signed 2-byte (16-bit) integer</td></tr><tr><td align="right"><code>SERIAL</code></td><td align="left">Auto Incrementing 4-byte (32-bit) integer. Should <strong>not</strong> be used as primary key.</td></tr><tr><td align="right"><code>BIGSERIAL</code></td><td align="left">Auto Incrementing 8-byte (64-bit) integer. Can be used as primary keys.</td></tr><tr><td align="right"><code>TIME</code></td><td align="left">Time of day (no time zone)</td></tr><tr><td align="right"><code>TIMETZ</code></td><td align="left">Time of day, including time zone</td></tr><tr><td align="right"><code>TIMESTAMP</code></td><td align="left">Date and time (no time zone)</td></tr><tr><td align="right"><code>TIMESTAMPTZ</code></td><td align="left">Date and time, including time zone</td></tr></tbody></table>
+<h2 id="constraints">Constraints</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="right">Type</th><th align="left">Description</th></tr></thead><tbody><tr><td align="right"><code>NOT NULL</code></td><td align="left">Column value is mandatory</td></tr><tr><td align="right"><code>UNIQUE</code></td><td align="left">The value in the column must be unique</td></tr><tr><td align="right"><code>DEFAULT</code></td><td align="left">Specify a default value in case a value is not provided by the user</td></tr><tr><td align="right"><code>PRIMARY KEY</code></td><td align="left">Set column and the primary key for the table</td></tr><tr><td align="right"><code>REFERENCES other_table(other_column)</code></td><td align="left">Add foreign key constraint</td></tr><tr><td align="right"><code>CHECK</code></td><td align="left">Boolean checks</td></tr></tbody></table>
+<p><strong>Note</strong>: If we provide proper names to our constraints, we will be able to catch errors properly when they are thrown by the database driver in case of constraint violations.</p>
+<h3 id="example-product-price-and-discounted-price">Example: Product price and discounted price</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  products (</span></span>
+<span class="line"><span style="color:#BABED8">    product_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    name</span><span style="color:#C792EA"> TEXT</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    </span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    -- column level check</span></span>
+<span class="line"><span style="color:#BABED8">    price </span><span style="color:#C792EA">NUMERIC</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#C792EA"> CHECK</span><span style="color:#BABED8"> (price </span><span style="color:#89DDFF">>=</span><span style="color:#F78C6C"> 0</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">    discounted_price </span><span style="color:#C792EA">NUMERIC</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (product_id),</span></span>
+<span class="line"><span style="color:#BABED8">    </span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    -- table level check</span></span>
+<span class="line"><span style="color:#C792EA">    CONSTRAINT</span><span style="color:#BABED8"> valid_discount </span><span style="color:#C792EA">CHECK</span><span style="color:#BABED8"> (discounted_price </span><span style="color:#89DDFF">&#x3C;</span><span style="color:#BABED8"> price)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<h3 id="example-unique-combinations">Example: Unique combinations</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id UUID </span><span style="color:#C792EA">DEFAULT</span><span style="color:#BABED8"> gen_random_uuid</span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">TEXT</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    </span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id),</span></span>
+<span class="line"><span style="color:#C792EA">    CONSTRAINT</span><span style="color:#BABED8"> email_unique </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#BABED8"> (email)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  user_profiles (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    profile_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    CONSTRAINT</span><span style="color:#BABED8"> unique_user_id_profile_id </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#BABED8"> (user_id, profile_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<p><strong>Note</strong>: In this example we have applied a table level constraint which ensures that following</p>
+<ul>
+<li><code>(1, 1)</code> and <code>(1, 2)</code> is allowed</li>
+<li><code>(1, 1)</code> and <code>(1, 1)</code> in two separate rows is not allowed.</li>
+</ul>
+<h2 id="tables">Tables</h2>
+<p>In SQL it is a convention that table names should be snake-case plurals.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- create a new table within a database</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    name</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    password</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    location</span><span style="color:#C792EA"> POINT</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<h2 id="uuid">UUID</h2>
+<p>UUIDs can be used as unique identifiers for records. Here is how they work.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- UUID as primary key, without default value</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id UUID </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- UUID as primary key, with auto-generating UUIDs at insertion</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id UUID </span><span style="color:#C792EA">DEFAULT</span><span style="color:#BABED8"> gen_random_uuid</span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- generating UUID at the time of insertion</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (user_id, email)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (gen_random_uuid </span><span style="color:#89DDFF">()</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (gen_random_uuid </span><span style="color:#89DDFF">()</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">user@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span></code></pre>
+<h3 id="why-use-uuid-over-bigserial-as-primary-key">Why use <code>UUID</code> over <code>BIGSERIAL</code> as primary key?</h3>
+<ul>
+<li>First question to ask is whether the record key should be random or sequential.</li>
+<li>If record key is going to be exposed to the users, they random keys are more secure. Sequential keys can lead to enumeration attacks.</li>
+</ul>
+<p>On the other hand, sequential keys have certain advantages as well</p>
+<ul>
+<li>They are faster to generate</li>
+<li>They are quick to index</li>
+<li>They take up less space than <code>UUID</code></li>
+</ul>
+<p>In summary, use <code>UUID</code> where security / entropy matters, otherwise default to using <code>BIGSERIAL</code> sequential keys.</p>
+<h3 id="array-columns">Array Columns</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- table with array field</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    phone_numbers </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">ARRAY</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- inserting data into array field</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (user_id, email, phone_numbers)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#F78C6C">    1</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">{"123123897", "39847928347", "53475934875"}</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">::</span><span style="color:#C792EA">text</span><span style="color:#BABED8">[]</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- alternative syntax</span></span>
+<span class="line"><span style="color:#BABED8">phone_numbers </span><span style="color:#C792EA">TEXT</span><span style="color:#BABED8">[],</span></span></code></pre>
+<h3 id="insert-data-into-table">Insert Data into Table</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- insert multiple records into table</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span><span style="color:#F78C6C">name</span><span style="color:#BABED8">, email, dob, </span><span style="color:#F78C6C">location</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">User one</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">user_one@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    DATE</span><span style="color:#89DDFF"> '</span><span style="color:#C3E88D">1990-02-10</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    POINT</span><span style="color:#89DDFF"> '</span><span style="color:#C3E88D">(30.44, 50.23)</span><span style="color:#89DDFF">'</span></span>
+<span class="line"><span style="color:#BABED8">  ),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">User two</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">user_two@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    DATE</span><span style="color:#89DDFF"> '</span><span style="color:#C3E88D">1998-09-17</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    POINT</span><span style="color:#89DDFF"> '</span><span style="color:#C3E88D">(30.44, 50.23)</span><span style="color:#89DDFF">'</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- insert into multiple tables</span></span>
+<span class="line"><span style="color:#F78C6C">WITH</span><span style="color:#BABED8"> password_insert </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> (</span></span>
+<span class="line"><span style="color:#F78C6C">  INSERT INTO</span><span style="color:#F78C6C"> password</span><span style="color:#BABED8"> (</span><span style="color:#F78C6C">hash</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#F78C6C">  VALUES</span><span style="color:#BABED8"> (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">abc123223213</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">  RETURNING id </span></span>
+<span class="line"><span style="color:#BABED8">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (email, </span><span style="color:#F78C6C">role</span><span style="color:#BABED8">, password_id)</span></span>
+<span class="line"><span style="color:#F78C6C">  VALUES</span><span style="color:#BABED8"> (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">ADMIN</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, (</span><span style="color:#F78C6C">select</span><span style="color:#BABED8"> id </span><span style="color:#F78C6C">from</span><span style="color:#BABED8"> password_insert));</span></span></code></pre>
+<h2 id="enumerations">Enumerations</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TYPE</span></span>
+<span class="line"><span style="color:#BABED8">  user_role </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> ENUM(</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">ADMIN</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">USER</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    role</span><span style="color:#BABED8"> user_role </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    password</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (email, </span><span style="color:#F78C6C">role</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, user_role </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">ADMIN</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span></code></pre>
+<h3 id="alternative-approach">Alternative approach</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">create</span><span style="color:#F78C6C"> table</span></span>
+<span class="line"><span style="color:#89DDFF">  "</span><span style="color:#C3E88D">user</span><span style="color:#89DDFF">"</span><span style="color:#BABED8"> (</span></span>
+<span class="line"><span style="color:#BABED8">    id uuid </span><span style="color:#F78C6C">not null</span><span style="color:#C792EA"> default</span><span style="color:#BABED8"> gen_random_uuid </span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">varchar</span><span style="color:#F78C6C"> not null</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    role</span><span style="color:#C792EA"> varchar</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">10</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#C792EA">    primary key</span><span style="color:#BABED8"> (id),</span></span>
+<span class="line"><span style="color:#C792EA">    constraint</span><span style="color:#BABED8"> role_enum </span><span style="color:#C792EA">check</span><span style="color:#BABED8"> (</span><span style="color:#F78C6C">role</span><span style="color:#F78C6C"> in</span><span style="color:#BABED8"> (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">ADMIN</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">USER</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">EMPLOYEE</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">)),</span></span>
+<span class="line"><span style="color:#C792EA">    constraint</span><span style="color:#BABED8"> email_unique </span><span style="color:#F78C6C">unique</span><span style="color:#BABED8"> (email)</span></span>
+<span class="line"><span style="color:#BABED8">  )</span></span></code></pre>
+<h2 id="domain-types">Domain types</h2>
+<p>Domain types can be used to extend existing types with additional checks etc.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> DOMAIN</span><span style="color:#82AAFF"> rating</span><span style="color:#F78C6C"> AS</span><span style="color:#BABED8"> FLOAT4 </span><span style="color:#C792EA">CHECK</span><span style="color:#BABED8"> (</span></span>
+<span class="line"><span style="color:#F78C6C">  VALUE</span><span style="color:#89DDFF"> >=</span><span style="color:#F78C6C"> 0</span></span>
+<span class="line"><span style="color:#F78C6C">  AND</span><span style="color:#F78C6C"> VALUE</span><span style="color:#89DDFF"> &#x3C;=</span><span style="color:#F78C6C"> 5</span></span>
+<span class="line"><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  book (</span></span>
+<span class="line"><span style="color:#BABED8">    book_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    name</span><span style="color:#C792EA"> TEXT</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    rating rating,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (book_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- insert dummy records</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  book (book_id, </span><span style="color:#F78C6C">name</span><span style="color:#BABED8">, rating)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">Foundation</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">5</span><span style="color:#BABED8">);</span></span></code></pre>
+<h2 id="composite-types">Composite types</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TYPE</span><span style="color:#82AAFF"> address</span><span style="color:#F78C6C"> as</span><span style="color:#BABED8"> (street </span><span style="color:#C792EA">TEXT</span><span style="color:#BABED8">, city </span><span style="color:#C792EA">TEXT</span><span style="color:#BABED8">, zip </span><span style="color:#C792EA">INT</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    address</span><span style="color:#F78C6C"> address</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (email)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span><span style="color:#BABED8"> users (email, </span><span style="color:#F78C6C">address</span><span style="color:#BABED8">) </span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span><span style="color:#BABED8"> (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">ROW</span><span style="color:#BABED8">(</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">Main street</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">Lahore</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">5400</span><span style="color:#BABED8">));</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- composite type fields can also be accessed as follows</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span><span style="color:#BABED8"> users (email, address.street, address.city, address.zip) </span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span><span style="color:#BABED8"> (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">Main street</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">Lahore</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">5400</span><span style="color:#BABED8">);</span></span></code></pre>
+<h2 id="pagination">Pagination</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#89DDFF">  *</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  users</span></span>
+<span class="line"><span style="color:#F78C6C">LIMIT</span></span>
+<span class="line"><span style="color:#F78C6C">  2</span></span>
+<span class="line"><span style="color:#BABED8">OFFSET </span><span style="color:#F78C6C">0</span><span style="color:#BABED8">;</span></span></code></pre>
+<p><strong>Note</strong>: <code>OFFSET 0</code> will return the first page of results.</p>
+<p><strong>Note</strong>: The <code>LIMIT</code> keyword is supported by <code>MySQL</code>, <code>PostgreSQL</code> and <code>SQLite</code> but it may not be supported by other databases.</p>
+<h3 id="example">Example</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">SELECT</span><span style="color:#89DDFF"> *</span><span style="color:#BABED8">, </span><span style="color:#82AAFF">COUNT</span><span style="color:#BABED8">(</span><span style="color:#89DDFF">*</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">OVER</span><span style="color:#89DDFF">()</span><span style="color:#F78C6C"> AS</span><span style="color:#BABED8"> total_count </span><span style="color:#F78C6C">FROM</span><span style="color:#BABED8"> users u</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span><span style="color:#BABED8"> u.deleted_at </span><span style="color:#F78C6C">IS</span><span style="color:#F78C6C"> NULL</span></span>
+<span class="line"><span style="color:#F78C6C">LIMIT</span><span style="color:#F78C6C"> 10</span></span>
+<span class="line"><span style="color:#BABED8">OFFSET </span><span style="color:#F78C6C">0</span><span style="color:#BABED8">;</span></span></code></pre>
+<p><strong>Note</strong>: The above query will not take into account the <code>LIMIT</code> and <code>OFFSET</code> options when calculating the <code>total_count</code> value.</p>
+<h2 id="relationships">Relationships</h2>
+<h3 id="one-to-one">One-to-one</h3>
+<p><strong>Mandatory one-to-one</strong>: Adding relationship field to the parent entity with <code>UNIQUE</code> constraint ensures that the a child entity will always exists for the parent. Do note that this does not prevent orphan child entities.</p>
+<p>E.g. In the following SQL schema, all <code>users</code> will have <code>profiles</code> but it is not necessary that all <code>profiles</code> will have associated users.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- table schema</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  profiles (</span></span>
+<span class="line"><span style="color:#BABED8">    profile_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    name</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (profile_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    -- notice the unique constraint (1:1)</span></span>
+<span class="line"><span style="color:#BABED8">    profile_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (profile_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> profiles (profile_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- insert dummy data</span></span>
+<span class="line"><span style="color:#F78C6C">WITH</span></span>
+<span class="line"><span style="color:#BABED8">  profile_insert </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> (</span></span>
+<span class="line"><span style="color:#F78C6C">    INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">      profiles (</span><span style="color:#F78C6C">name</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#F78C6C">    VALUES</span></span>
+<span class="line"><span style="color:#BABED8">      (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">User One</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">    RETURNING</span></span>
+<span class="line"><span style="color:#BABED8">      profile_id</span></span>
+<span class="line"><span style="color:#BABED8">  )</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (email, profile_id)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">user@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    (</span></span>
+<span class="line"><span style="color:#F78C6C">      SELECT</span></span>
+<span class="line"><span style="color:#BABED8">        profile_id</span></span>
+<span class="line"><span style="color:#F78C6C">      FROM</span></span>
+<span class="line"><span style="color:#BABED8">        profile_insert</span></span>
+<span class="line"><span style="color:#BABED8">    )</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- fetch data through users table</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.name</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  users</span></span>
+<span class="line"><span style="color:#F78C6C">JOIN</span><span style="color:#BABED8"> profiles </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> users.profile_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> profiles.profile_id;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- fetch data through profiles table</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.profile_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.name</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  profiles</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> users </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> profiles.profile_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> users.profile_id</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.profile_id </span><span style="color:#89DDFF">=</span><span style="color:#F78C6C"> 2</span><span style="color:#BABED8">;</span></span></code></pre>
+<p><strong>Optional one-to-one</strong>: Adding relationship field to the child entity with <code>UNIQUE</code> constraint ensures that all child entities will be associated with parent entities. However, this does not mean that all parent entities will necessarily have associated child entities.</p>
+<p>E.g. In the following SQL schema, it is ensured that all <code>profiles</code> will have associated <code>users</code>. However, it is possible that some <code>users</code> may not have associated <code>profile</code>.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">text</span><span style="color:#F78C6C"> UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  profiles (</span></span>
+<span class="line"><span style="color:#BABED8">    profile_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    title </span><span style="color:#C792EA">TEXT</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    -- notice the unique constraint (1:1)    </span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (profile_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (user_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> users (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- insert dummy record</span></span>
+<span class="line"><span style="color:#F78C6C">WITH</span></span>
+<span class="line"><span style="color:#BABED8">  user_insert </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> (</span></span>
+<span class="line"><span style="color:#F78C6C">    INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">      users (email)</span></span>
+<span class="line"><span style="color:#F78C6C">    VALUES</span></span>
+<span class="line"><span style="color:#BABED8">      (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">user@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">) RETURNING user_id</span></span>
+<span class="line"><span style="color:#BABED8">  )</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  profiles (profile_id, title)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#BABED8">    (</span></span>
+<span class="line"><span style="color:#F78C6C">      SELECT</span></span>
+<span class="line"><span style="color:#BABED8">        user_id</span></span>
+<span class="line"><span style="color:#F78C6C">      from</span></span>
+<span class="line"><span style="color:#BABED8">        user_insert</span></span>
+<span class="line"><span style="color:#BABED8">    ),</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">Post one title</span><span style="color:#89DDFF">'</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- fetch from parent entity</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.title</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  users</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> profiles </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> profiles.user_id</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#F78C6C"> 1</span><span style="color:#BABED8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- fetch from child entity</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.title</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  profiles</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> users </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> profiles.user_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> users.user_id</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#F78C6C"> 1</span><span style="color:#BABED8">;</span></span></code></pre>
+<h3 id="one-to-many">One-to-many</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- table schema</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">100</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  posts (</span></span>
+<span class="line"><span style="color:#BABED8">    post_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    title </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">100</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">    -- notice user_id has *no unique constraint* (1:M)</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (post_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (user_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> users (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- insert dummy data</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (email)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">WITH</span></span>
+<span class="line"><span style="color:#BABED8">  user_insert </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> (</span></span>
+<span class="line"><span style="color:#F78C6C">    INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">      users (email)</span></span>
+<span class="line"><span style="color:#F78C6C">    VALUES</span></span>
+<span class="line"><span style="color:#BABED8">      (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">user@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">    RETURNING</span></span>
+<span class="line"><span style="color:#BABED8">      user_id</span></span>
+<span class="line"><span style="color:#BABED8">  )</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  posts (title, user_id)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">post one</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    (</span></span>
+<span class="line"><span style="color:#F78C6C">      SELECT</span></span>
+<span class="line"><span style="color:#BABED8">        user_id</span></span>
+<span class="line"><span style="color:#F78C6C">      FROM</span></span>
+<span class="line"><span style="color:#BABED8">        user_insert</span></span>
+<span class="line"><span style="color:#BABED8">    )</span></span>
+<span class="line"><span style="color:#BABED8">  ),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">post two</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    (</span></span>
+<span class="line"><span style="color:#F78C6C">      SELECT</span></span>
+<span class="line"><span style="color:#BABED8">        user_id</span></span>
+<span class="line"><span style="color:#F78C6C">      FROM</span></span>
+<span class="line"><span style="color:#BABED8">        user_insert</span></span>
+<span class="line"><span style="color:#BABED8">    )</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- fetch related records</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#BABED8">  posts.title</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  users</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> posts </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> posts.user_id</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#F78C6C"> 2</span><span style="color:#BABED8">;</span></span></code></pre>
+<h3 id="many-to-many">Many-to-many</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- schena definitions</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  roles (</span></span>
+<span class="line"><span style="color:#BABED8">    role_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    role_name </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8"> (</span><span style="color:#F78C6C">100</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (role_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">VARCHAR</span><span style="color:#BABED8"> (</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">UNIQUE</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    password</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8"> (</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- TODO: update example to use compound ids, drop user_role_id column.</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  user_roles (</span></span>
+<span class="line"><span style="color:#BABED8">    user_role_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    role_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_role_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (user_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> users (user_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (role_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> roles (role_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- insert test data</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  roles (role_name)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">customer</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">user</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (email)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin_one@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin_two@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">user@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">customer@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  user_roles (user_id, role_id)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">1</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">2</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">1</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">3</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">3</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">4</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">2</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- query: get all admins</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#BABED8">  roles.role_name</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  users</span></span>
+<span class="line"><span style="color:#F78C6C">  INNER JOIN</span><span style="color:#BABED8"> user_roles </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> user_roles.user_id</span></span>
+<span class="line"><span style="color:#F78C6C">  INNER JOIN</span><span style="color:#BABED8"> roles </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> user_roles.role_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> roles.role_id</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  roles.role_name </span><span style="color:#89DDFF">=</span><span style="color:#89DDFF"> '</span><span style="color:#C3E88D">admin</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">;</span></span></code></pre>
+<h3 id="relationships-and-delete-cascades">Relationships and Delete cascades</h3>
+<p>When creating relationships, always question yourself which table is the <code>parent</code> and which table is the <code>child</code>. This is because we will very likely have <code>delete cascade</code> in our foreign relationships. Consider the following schema.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">create</span><span style="color:#F78C6C"> table</span><span style="color:#BABED8"> "</span><span style="color:#82AAFF">user</span><span style="color:#BABED8">" (</span></span>
+<span class="line"><span style="color:#BABED8">  id uuid </span><span style="color:#F78C6C">not null</span></span>
+<span class="line"><span style="color:#BABED8">  , email </span><span style="color:#C792EA">varchar</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">not null</span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#F78C6C">password</span><span style="color:#C792EA"> varchar</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">not null</span><span style="color:#BABED8">  </span></span>
+<span class="line"><span style="color:#BABED8">  , created_at </span><span style="color:#C792EA">timestamp</span><span style="color:#F78C6C"> not null</span><span style="color:#C792EA"> default</span><span style="color:#F78C6C"> now</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#BABED8">  , updated_at </span><span style="color:#C792EA">timestamp</span><span style="color:#F78C6C"> not null</span><span style="color:#C792EA"> default</span><span style="color:#F78C6C"> now</span><span style="color:#89DDFF">()</span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#C792EA">primary key</span><span style="color:#BABED8"> (id)</span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#C792EA">constraint</span><span style="color:#BABED8"> email_unique </span><span style="color:#F78C6C">unique</span><span style="color:#BABED8">(email)</span></span>
+<span class="line"><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">create</span><span style="color:#F78C6C"> index</span><span style="color:#82AAFF"> user_email_idx</span><span style="color:#F78C6C"> on</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">user</span><span style="color:#89DDFF">"</span><span style="color:#BABED8">(email);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">create</span><span style="color:#F78C6C"> table</span><span style="color:#82AAFF"> user_profile</span><span style="color:#BABED8"> (</span></span>
+<span class="line"><span style="color:#BABED8">  id uuid </span><span style="color:#F78C6C">not null</span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#F78C6C">name</span><span style="color:#C792EA"> varchar</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">)  </span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#F78C6C">address</span><span style="color:#C792EA"> text</span><span style="color:#BABED8"> </span></span>
+<span class="line"><span style="color:#BABED8">  , city </span><span style="color:#C792EA">varchar</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">  , country </span><span style="color:#C792EA">varchar</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">)  </span></span>
+<span class="line"><span style="color:#BABED8">  , user_id uuid </span><span style="color:#F78C6C">not null</span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#C792EA">primary key</span><span style="color:#BABED8"> (id)</span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#C792EA">foreign key</span><span style="color:#BABED8"> (user_id) </span><span style="color:#C792EA">references</span><span style="color:#89DDFF"> "</span><span style="color:#C3E88D">user</span><span style="color:#89DDFF">"</span><span style="color:#BABED8">(id) </span><span style="color:#C792EA">on delete cascade</span></span>
+<span class="line"><span style="color:#BABED8">  , </span><span style="color:#C792EA">constraint</span><span style="color:#BABED8"> user_id_unique </span><span style="color:#F78C6C">unique</span><span style="color:#BABED8">(user_id)</span></span>
+<span class="line"><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">create</span><span style="color:#F78C6C"> index</span><span style="color:#82AAFF"> user_profile_user_id_idx</span><span style="color:#F78C6C"> on</span><span style="color:#BABED8"> user_profile(user_id);</span></span></code></pre>
+<p>In this schema, <code>user</code> is the parent and <code>user_profile</code> is the child table. This is an <strong>optional one-to-one</strong> relation because a <code>user</code> may not have any associated <code>user_profile</code>.</p>
+<p>Notice the <code>user_id</code> field with <code>delete cascade</code> in the <code>user_profile</code> table. This ensures that when a <code>user</code> is deleted, the associated <code>user_profile</code> is also deleted.</p>
+<p>To sum up, is <code>delete cascade</code> is specified, the entry in child table will be deleted when the entry in the parent table is deleted.</p>
+<h2 id="json-aggregation">JSON Aggregation</h2>
+<p>We can use this trick to fetch records of relationships as JSON array. This will make it incredibly easier to serialise returned data into native language of our choosing.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  posts (</span></span>
+<span class="line"><span style="color:#BABED8">    post_id UUID </span><span style="color:#C792EA">DEFAULT</span><span style="color:#BABED8"> gen_random_uuid</span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    title </span><span style="color:#C792EA">TEXT</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (post_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  comments (</span></span>
+<span class="line"><span style="color:#BABED8">    comment_id UUID </span><span style="color:#C792EA">DEFAULT</span><span style="color:#BABED8"> gen_random_uuid</span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    text</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    post_id UUID </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (comment_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (post_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> posts (post_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  posts.post_id,</span></span>
+<span class="line"><span style="color:#BABED8">  posts.title,</span></span>
+<span class="line"><span style="color:#BABED8">  jsonb_agg (</span></span>
+<span class="line"><span style="color:#BABED8">    jsonb_build_object (</span></span>
+<span class="line"><span style="color:#89DDFF">      '</span><span style="color:#C3E88D">comment_id</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">      comments.comment_id,</span></span>
+<span class="line"><span style="color:#89DDFF">      '</span><span style="color:#C3E88D">text</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">      comments.text</span></span>
+<span class="line"><span style="color:#BABED8">    )</span></span>
+<span class="line"><span style="color:#BABED8">  ) </span><span style="color:#F78C6C">as</span><span style="color:#BABED8"> comments</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  posts</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> comments </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> posts.post_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> comments.post_id</span></span>
+<span class="line"><span style="color:#F78C6C">GROUP BY</span></span>
+<span class="line"><span style="color:#BABED8">  posts.post_id,</span></span>
+<span class="line"><span style="color:#BABED8">  posts.title;</span></span></code></pre>
+<h3 id="a-better-implementation">A better implementation</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">create</span><span style="color:#F78C6C"> table</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id uuid </span><span style="color:#C792EA">default</span><span style="color:#BABED8"> gen_random_uuid </span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">text</span><span style="color:#F78C6C"> not null</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    primary key</span><span style="color:#BABED8"> (user_id),</span></span>
+<span class="line"><span style="color:#C792EA">    constraint</span><span style="color:#BABED8"> email_unique </span><span style="color:#F78C6C">unique</span><span style="color:#BABED8"> (email)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">create</span><span style="color:#F78C6C"> table</span></span>
+<span class="line"><span style="color:#BABED8">  posts (</span></span>
+<span class="line"><span style="color:#BABED8">    post_id uuid </span><span style="color:#C792EA">default</span><span style="color:#BABED8"> gen_random_uuid </span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    title </span><span style="color:#C792EA">text</span><span style="color:#F78C6C"> not null</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    user_id uuid </span><span style="color:#F78C6C">not null</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    primary key</span><span style="color:#BABED8"> (post_id),</span></span>
+<span class="line"><span style="color:#C792EA">    foreign key</span><span style="color:#BABED8"> (user_id) </span><span style="color:#C792EA">references</span><span style="color:#BABED8"> users (user_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">select</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id,</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#82AAFF">  coalesce</span><span style="color:#BABED8">(</span></span>
+<span class="line"><span style="color:#BABED8">    jsonb_agg (posts) </span><span style="color:#F78C6C">filter</span><span style="color:#BABED8"> (</span><span style="color:#F78C6C">where</span><span style="color:#BABED8"> posts.user_id </span><span style="color:#F78C6C">is not null</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">    to_jsonb(</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">[]</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">::</span><span style="color:#C792EA">text</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">  ) </span><span style="color:#F78C6C">as</span><span style="color:#BABED8"> posts</span></span>
+<span class="line"><span style="color:#F78C6C">from</span></span>
+<span class="line"><span style="color:#BABED8">  users</span></span>
+<span class="line"><span style="color:#F78C6C">  left join</span><span style="color:#BABED8"> posts </span><span style="color:#F78C6C">on</span><span style="color:#BABED8"> users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> posts.user_id</span></span>
+<span class="line"><span style="color:#F78C6C">group by</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id</span></span></code></pre>
+<p><strong>Note</strong>: <code>coalesce</code> is a variadic function which returns the first non-null value it is provided. In the above example, the first argument to <code>coalesce</code> will be <code>NULL</code> when no <code>posts</code> are found against the <code>user</code>. The second argument to <code>coalesce</code> will be a non-null value, therefore it will be returned instead of <code>NULL</code>.</p>
+<h2 id="transactions">Transactions</h2>
+<h3 id="acid">ACID</h3>
+<p>ACID is an acronym that refers to the set of 4 key properties that define a transaction.</p>
+<ul>
+<li>
+<p><strong>Atomicity</strong>: Each statement in a transaction (to read, write, update or delete data) is treated as a single unit. Either the entire statement is executed, or none of it is executed. This property prevents data loss and corruption from occurring in case of system failure.</p>
+</li>
+<li>
+<p><strong>Consistency</strong>: Ensures that transactions only make changes to tables in predefined, predictable ways. Transactional consistency ensures that corruption or errors in your data do not create unintended consequences for the integrity of your table.</p>
+</li>
+<li>
+<p><strong>Isolation</strong>: When multiple users are reading and writing from the same table all at once, isolation of their transactions ensures that the concurrent transactions don’t interfere with or affect one another. Each request can occur as though they were occurring one by one, even though they’re actually occurring simultaneously.</p>
+</li>
+<li>
+<p><strong>Durability</strong>: Ensures that changes to your data made by successfully executed transactions will be saved, even in the event of system failure.</p>
+</li>
+</ul>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- table schema as some dummy data</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  accounts (</span></span>
+<span class="line"><span style="color:#BABED8">    account_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    balance </span><span style="color:#C792EA">BIGINT</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (account_id),</span></span>
+<span class="line"><span style="color:#C792EA">    CONSTRAINT</span><span style="color:#BABED8"> balance_nonnegative </span><span style="color:#C792EA">CHECK</span><span style="color:#BABED8"> (balance </span><span style="color:#89DDFF">>=</span><span style="color:#F78C6C"> 0</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"><span style="color:#BABED8">  </span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span><span style="color:#BABED8"> accounts (account_id, balance) </span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span><span style="color:#BABED8"> (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">100000</span><span style="color:#BABED8">), (</span><span style="color:#F78C6C">2</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">20000</span><span style="color:#BABED8">), (</span><span style="color:#F78C6C">3</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">40500000</span><span style="color:#BABED8">);</span></span></code></pre>
+<p><strong>Note</strong>: <code>BIGINT</code> is used to store currency values in cents.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">BEGIN</span><span style="color:#BABED8">;</span></span>
+<span class="line"><span style="color:#F78C6C">UPDATE</span><span style="color:#BABED8"> accounts </span><span style="color:#F78C6C">SET</span><span style="color:#BABED8"> balance </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> balance </span><span style="color:#89DDFF">-</span><span style="color:#F78C6C"> 100000</span><span style="color:#F78C6C"> WHERE</span><span style="color:#BABED8"> account_id </span><span style="color:#89DDFF">=</span><span style="color:#F78C6C"> 1</span><span style="color:#BABED8">;</span></span>
+<span class="line"><span style="color:#F78C6C">UPDATE</span><span style="color:#BABED8"> accounts </span><span style="color:#F78C6C">SET</span><span style="color:#BABED8"> balance </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> balance </span><span style="color:#89DDFF">+</span><span style="color:#F78C6C"> 100000</span><span style="color:#F78C6C"> WHERE</span><span style="color:#BABED8"> account_id </span><span style="color:#89DDFF">=</span><span style="color:#F78C6C"> 2</span><span style="color:#BABED8">;</span></span>
+<span class="line"><span style="color:#F78C6C">COMMIT</span><span style="color:#BABED8">;</span></span></code></pre>
+<h2 id="performance-optimisations">Performance optimisations</h2>
+<h3 id="prepared-statements">Prepared statements</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- define the prepared statement</span></span>
+<span class="line"><span style="color:#BABED8">PREPARE</span></span>
+<span class="line"><span style="color:#BABED8">  users_insert </span><span style="color:#F78C6C">AS</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span><span style="color:#F78C6C">name</span><span style="color:#BABED8">, email)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  ($</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, $</span><span style="color:#F78C6C">2</span><span style="color:#BABED8">);</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- execute existing prepared statement</span></span>
+<span class="line"><span style="color:#F78C6C">EXECUTE</span><span style="color:#BABED8"> users_insert (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">User one</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">user_one@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">); </span></span></code></pre>
+<p><strong>Note</strong>: Prepared statements are scoped to connection, this means that only the session which prepares the statement can execute it.</p>
+<h3 id="indexing">Indexing</h3>
+<p>A good rule of thumb is to create database indexes for everything that is referenced in the <code>WHERE</code>, <code>HAVING</code> and <code>ORDER BY</code> parts of your SQL queries.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- create indexes on fields frequently used for querying tables</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> INDEX</span><span style="color:#82AAFF"> users_index</span><span style="color:#F78C6C"> ON</span><span style="color:#BABED8"> users (email, </span><span style="color:#F78C6C">name</span><span style="color:#BABED8">);</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- remove index if not required</span></span>
+<span class="line"><span style="color:#F78C6C">DROP</span><span style="color:#F78C6C"> INDEX</span><span style="color:#BABED8"> users_index;</span></span></code></pre>
+<p><strong>Note</strong>: Indexes help with <code>read</code> speeds. However, they slow down <code>write</code> speeds because with every new records inserted, indexes have to be updated as well.</p>
+<h3 id="partitioning">Partitioning</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- create the original table: will be partitioned by day (through timestamp)</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  events (</span></span>
+<span class="line"><span style="color:#BABED8">    event_id UUID </span><span style="color:#F78C6C">NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    payload </span><span style="color:#F78C6C">JSON</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    source </span><span style="color:#C792EA">INET</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    event_timestamp </span><span style="color:#C792EA">TIMESTAMP</span></span>
+<span class="line"><span style="color:#BABED8">  )</span></span>
+<span class="line"><span style="color:#F78C6C">PARTITION</span><span style="color:#F78C6C"> BY</span></span>
+<span class="line"><span style="color:#F78C6C">  RANGE</span><span style="color:#BABED8"> (event_timestamp);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- create subpartitions for single days</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  events_20230401 </span><span style="color:#F78C6C">PARTITION</span><span style="color:#BABED8"> OF events </span><span style="color:#F78C6C">FOR</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">2023-04-01</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">TO</span><span style="color:#BABED8"> (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">2023-04-02</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  events_20230402 </span><span style="color:#F78C6C">PARTITION</span><span style="color:#BABED8"> OF events </span><span style="color:#F78C6C">FOR</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">2023-04-02</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">TO</span><span style="color:#BABED8"> (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">2023-04-03</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span></code></pre>
+<p>Caveats</p>
+<ul>
+<li>The sub-partition tables in the above example will need to be created using a scheduler like CRON job etc.</li>
+<li>If a query has to multiple partitions, it will be slower than if we had not used partitioning at all.</li>
+<li>If a table is partitioned, it cannot have a global unique row identifier. However, row IDs can be unique within any single partition.</li>
+</ul>
+<h3 id="stored-procedures">Stored Procedures</h3>
+<p>Procedures are reusable blocks of statements, which don’t return a value.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- example table with some dummy data</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  accounts (</span></span>
+<span class="line"><span style="color:#BABED8">    account_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    balance </span><span style="color:#C792EA">BIGINT</span><span style="color:#F78C6C"> NOT NULL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (account_id),</span></span>
+<span class="line"><span style="color:#C792EA">    CONSTRAINT</span><span style="color:#BABED8"> balance_nonnegative </span><span style="color:#C792EA">CHECK</span><span style="color:#BABED8"> (balance </span><span style="color:#89DDFF">>=</span><span style="color:#F78C6C"> 0</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  accounts (account_id, balance)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">100</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">2</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">300</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">3</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">4000</span><span style="color:#BABED8">);</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span></span>
+<span class="line"><span style="color:#F78C6C">OR</span></span>
+<span class="line"><span style="color:#F78C6C">REPLACE</span></span>
+<span class="line"><span style="color:#F78C6C">  PROCEDURE</span><span style="color:#BABED8"> transfer_balance (</span></span>
+<span class="line"><span style="color:#BABED8">    from_account </span><span style="color:#C792EA">INTEGER</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    to_account </span><span style="color:#C792EA">INTEGER</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    amount </span><span style="color:#C792EA">BIGINT</span></span>
+<span class="line"><span style="color:#BABED8">  ) </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> $$ </span><span style="color:#F78C6C">BEGIN</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic">  -- deduct from sender</span></span>
+<span class="line"><span style="color:#F78C6C">UPDATE</span></span>
+<span class="line"><span style="color:#BABED8">  accounts</span></span>
+<span class="line"><span style="color:#F78C6C">SET</span></span>
+<span class="line"><span style="color:#BABED8">  balance </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> balance </span><span style="color:#89DDFF">-</span><span style="color:#BABED8"> amount</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  account_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> from_account;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- add to recepient</span></span>
+<span class="line"><span style="color:#F78C6C">UPDATE</span></span>
+<span class="line"><span style="color:#BABED8">  accounts</span></span>
+<span class="line"><span style="color:#F78C6C">SET</span></span>
+<span class="line"><span style="color:#BABED8">  balance </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> balance </span><span style="color:#89DDFF">+</span><span style="color:#BABED8"> amount</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  account_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> to_account;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">COMMIT</span><span style="color:#BABED8">;</span></span>
+<span class="line"><span style="color:#F78C6C">END</span><span style="color:#BABED8">;</span></span>
+<span class="line"><span style="color:#BABED8">$$ </span><span style="color:#F78C6C">LANGUAGE</span><span style="color:#BABED8"> plpgsql;</span></span></code></pre>
+<p><strong>Note</strong>: The statements defined within the procedure body are executed as a single transaction. This means, when a procedure is called, it will either succeed entirely or fail entirely.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>-- list out all stored procedures inside psql shell</span></span>
+<span class="line"><span>db=# \df</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- execute a stored procedure</span></span>
+<span class="line"><span style="color:#F78C6C">CALL</span><span style="color:#BABED8"> transfer_balance (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">2</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">100</span><span style="color:#BABED8">);</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- drop procedure if not required</span></span>
+<span class="line"><span style="color:#F78C6C">DROP</span><span style="color:#F78C6C"> PROCEDURE</span></span>
+<span class="line"><span style="color:#BABED8">  transfer_balance (</span></span>
+<span class="line"><span style="color:#BABED8">    from_account </span><span style="color:#C792EA">INTEGER</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    to_account </span><span style="color:#C792EA">INTEGER</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    amount </span><span style="color:#C792EA">BIGINT</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<h3 id="stored-functions">Stored functions</h3>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- define schema</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  profiles (</span></span>
+<span class="line"><span style="color:#BABED8">    profile_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    name</span><span style="color:#C792EA"> TEXT</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#F78C6C">    address</span><span style="color:#C792EA"> TEXT</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (profile_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  users (</span></span>
+<span class="line"><span style="color:#BABED8">    user_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    email </span><span style="color:#C792EA">TEXT</span><span style="color:#F78C6C"> UNIQUE</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    profile_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#F78C6C"> UNIQUE</span><span style="color:#BABED8">, </span><span style="color:#676E95;font-style:italic">-- one-to-one relation  </span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (user_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (profile_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> profiles (profile_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- insert dummy data</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  profiles (profile_id, </span><span style="color:#F78C6C">name</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">address</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">Admin</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">12 Main street</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">2</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">Customer</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">13 Street</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (user_id, email, profile_id)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">1</span><span style="color:#BABED8">),</span></span>
+<span class="line"><span style="color:#BABED8">  (</span><span style="color:#F78C6C">2</span><span style="color:#BABED8">, </span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">customer@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">2</span><span style="color:#BABED8">);</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- define stored functions and their return (composite) types</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TYPE</span><span style="color:#82AAFF"> user_with_profile</span><span style="color:#F78C6C"> as</span><span style="color:#BABED8"> (email </span><span style="color:#C792EA">TEXT</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">name</span><span style="color:#C792EA"> TEXT</span><span style="color:#BABED8">, </span><span style="color:#F78C6C">address</span><span style="color:#C792EA"> TEXT</span><span style="color:#BABED8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span></span>
+<span class="line"><span style="color:#F78C6C">  FUNCTION</span><span style="color:#BABED8"> get_user (id </span><span style="color:#C792EA">INT</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">RETURNS</span><span style="color:#BABED8"> user_with_profile </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> $$</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  users.email,</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.name,</span></span>
+<span class="line"><span style="color:#BABED8">  profiles.address</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  users</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> profiles </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> users.profile_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> profiles.profile_id</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  users.user_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> id</span></span>
+<span class="line"><span style="color:#F78C6C">LIMIT</span></span>
+<span class="line"><span style="color:#F78C6C">  1</span><span style="color:#BABED8"> $$ </span><span style="color:#F78C6C">LANGUAGE</span><span style="color:#F78C6C"> SQL</span><span style="color:#BABED8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#676E95;font-style:italic">-- execute defined function</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#89DDFF">  *</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  get_user (</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">);</span></span></code></pre>
+<p><strong>Note</strong>: If we are simply returning a row from an existing (single) table, we can put the name of the table as the function return type.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- remove a defined function</span></span>
+<span class="line"><span style="color:#F78C6C">DROP</span><span style="color:#F78C6C"> FUNCTION</span><span style="color:#BABED8"> get_user (id </span><span style="color:#C792EA">INT</span><span style="color:#BABED8">);</span></span></code></pre>
+<h2 id="hashing-passwords-inside-postgresql">Hashing passwords inside PostgreSQL</h2>
+<p>PostgreSQL hashing functions rely on <code>pgcrypto</code> extension, it needs to be manually enabled on the database.</p>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- enable extension on the current database</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#BABED8"> EXTENSION pgcrypto;</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- define a stored function for quickly hashing passwords</span></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span></span>
+<span class="line"><span style="color:#F78C6C">OR</span></span>
+<span class="line"><span style="color:#F78C6C">REPLACE</span></span>
+<span class="line"><span style="color:#F78C6C">  FUNCTION</span><span style="color:#BABED8"> hash_password (</span><span style="color:#F78C6C">password</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">)) </span><span style="color:#F78C6C">RETURNS</span><span style="color:#C792EA"> VARCHAR</span><span style="color:#BABED8">(</span><span style="color:#F78C6C">255</span><span style="color:#BABED8">) </span><span style="color:#F78C6C">AS</span><span style="color:#BABED8"> $$ </span><span style="color:#F78C6C">BEGIN</span></span>
+<span class="line"><span style="color:#F78C6C">RETURN</span></span>
+<span class="line"><span style="color:#BABED8">  crypt (</span><span style="color:#F78C6C">password</span><span style="color:#BABED8">, gen_salt (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">bf</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">));</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">END</span><span style="color:#BABED8">;</span></span>
+<span class="line"><span style="color:#BABED8">$$ </span><span style="color:#F78C6C">LANGUAGE</span><span style="color:#BABED8"> plpgsql;</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#676E95;font-style:italic">-- hash password at the time of record creation</span></span>
+<span class="line"><span style="color:#F78C6C">INSERT INTO</span></span>
+<span class="line"><span style="color:#BABED8">  users (user_id, email, </span><span style="color:#F78C6C">password</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#F78C6C">VALUES</span></span>
+<span class="line"><span style="color:#BABED8">  (</span></span>
+<span class="line"><span style="color:#BABED8">    gen_random_uuid </span><span style="color:#89DDFF">()</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#89DDFF">    '</span><span style="color:#C3E88D">admin@site.com</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    hash_password (</span><span style="color:#89DDFF">'</span><span style="color:#C3E88D">abc123123</span><span style="color:#89DDFF">'</span><span style="color:#BABED8">)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<h2 id="views">Views</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  sites (</span></span>
+<span class="line"><span style="color:#BABED8">    site_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    site_name </span><span style="color:#C792EA">TEXT</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (site_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  orders (</span></span>
+<span class="line"><span style="color:#BABED8">    order_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    amount </span><span style="color:#C792EA">DECIMAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (order_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#F78C6C"> TABLE</span></span>
+<span class="line"><span style="color:#BABED8">  site_orders (</span></span>
+<span class="line"><span style="color:#BABED8">    site_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#BABED8">    order_id </span><span style="color:#C792EA">BIGSERIAL</span><span style="color:#BABED8">,</span></span>
+<span class="line"><span style="color:#C792EA">    PRIMARY KEY</span><span style="color:#BABED8"> (site_id, order_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (site_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> sites (site_id),</span></span>
+<span class="line"><span style="color:#C792EA">    FOREIGN KEY</span><span style="color:#BABED8"> (order_id) </span><span style="color:#C792EA">REFERENCES</span><span style="color:#BABED8"> orders (order_id)</span></span>
+<span class="line"><span style="color:#BABED8">  );</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">CREATE</span><span style="color:#BABED8"> VIEW</span></span>
+<span class="line"><span style="color:#BABED8">  site_orders_view </span><span style="color:#F78C6C">AS</span></span>
+<span class="line"><span style="color:#F78C6C">SELECT</span></span>
+<span class="line"><span style="color:#BABED8">  sites.site_name,</span></span>
+<span class="line"><span style="color:#BABED8">  orders.order_id,</span></span>
+<span class="line"><span style="color:#BABED8">  orders.amount</span></span>
+<span class="line"><span style="color:#F78C6C">FROM</span></span>
+<span class="line"><span style="color:#BABED8">  site_orders</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> sites </span><span style="color:#F78C6C">ON</span><span style="color:#BABED8"> site_orders.site_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> sites.site_id</span></span>
+<span class="line"><span style="color:#F78C6C">  JOIN</span><span style="color:#BABED8"> orders </span><span style="color:#F78C6C">on</span><span style="color:#BABED8"> site_orders.order_id </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> orders.order_id</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span></span>
+<span class="line"><span style="color:#BABED8">  orders.amount </span><span style="color:#89DDFF">></span><span style="color:#F78C6C"> 100</span><span style="color:#BABED8">;</span></span></code></pre>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">SELECT</span><span style="color:#89DDFF"> *</span><span style="color:#F78C6C"> FROM</span><span style="color:#BABED8"> site_orders_view;</span></span></code></pre>
+<h2 id="n1-query-problem">N+1 query problem</h2>
+<p>N+1 queries are a performance problem in which the application makes database queries in a loop, instead of making a single query that returns or modifies all the information at once. Each database connection takes some amount of time, so querying the database in a loop can be many times slower than doing it just once. This problem often occurs when you use an object-relational mapping (ORM) tool in web frameworks like Django or Ruby on Rails.</p>
+<h2 id="optional-filter-parameters">Optional filter parameters</h2>
+<pre class="astro-code material-theme-palenight" style="background-color:#292D3E;color:#babed8; overflow-x: auto;" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F78C6C">SELECT</span><span style="color:#89DDFF"> *</span><span style="color:#F78C6C"> FROM</span><span style="color:#BABED8"> people</span></span>
+<span class="line"><span style="color:#F78C6C">WHERE</span><span style="color:#BABED8"> </span></span>
+<span class="line"><span style="color:#BABED8">	employed </span><span style="color:#89DDFF">=</span><span style="color:#BABED8"> TRUE</span></span>
+<span class="line"><span style="color:#F78C6C">	AND</span><span style="color:#BABED8"> ($</span><span style="color:#F78C6C">1</span><span style="color:#F78C6C"> IS</span><span style="color:#F78C6C"> NULL</span><span style="color:#F78C6C"> OR</span><span style="color:#BABED8"> age </span><span style="color:#89DDFF">></span><span style="color:#BABED8"> $</span><span style="color:#F78C6C">1</span><span style="color:#BABED8">)</span></span></code></pre>
+<p>In the above query, <code>$1</code> is a nullable value for <code>age</code>. If we pass in a non-null value, the condition <code>age > $1</code> will apply. Is we pass in a null value, only the first portion of the condition i.e. <code>$1 IS NULL</code> will evaluate and short-circuit the condition.</p>
+<h2 id="to-do">To-do</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled> Type casting</li>
+<li class="task-list-item"><input type="checkbox" disabled> Additional Features <a href="https://sive.rs/pg">Link</a></li>
+<li class="task-list-item"><input type="checkbox" disabled> Volatile</li>
+<li class="task-list-item"><input type="checkbox" disabled> Triggers / Listen / Notify</li>
+<li class="task-list-item"><input type="checkbox" disabled> Partitioning <a href="https://rasiksuhail.medium.com/guide-to-postgresql-table-partitioning-c0814b0fbd9b">Link</a></li>
+</ul> </div> </div> </div>  </div>  </main> <footer class="py-4 bg-gray-200 text-gray-500"> <div class="container max-w-6xl mx-auto px-6 lg:px-10">  <div class="flex"> <span class="text-sm mx-auto">© 2025 - Muhammad Moeen</span> </div>  </div> </footer> <div data-scrollbuttoncontainer class="transition-all duration-300 opacity-0 cursor-pointer"> <button data-scrollbutton title="Go To Top" class="fixed z-90 bottom-8 right-8 border-0 w-12 h-12 rounded-full drop-shadow-md bg-black text-white text-3xl font-bold"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4 m-auto"> <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5"></path> </svg> </button> </div> <script src="/scripts/scrolltop.js" defer></script> </body></html>
